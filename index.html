@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <meta name="description" content="">
+
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg?v=5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-site-header></div>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero home-hero" aria-labelledby="home-hero-title">
+            <div class="hero-media" aria-hidden="true">
+                <img data-hero-bg src="./assets/images/hero-home.jpg" alt="">
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-lines" aria-hidden="true"></div>
+
+            <div class="container-wide hero-layout">
+                <div class="hero-content">
+                    <span class="kicker" data-config-text="homeHeroKicker"></span>
+
+                    <h1 id="home-hero-title" data-config-text="homeHeroTitle"></h1>
+
+                    <p data-config-text="homeHeroIntro"></p>
+
+                    <div class="btn-row" aria-label="Home page actions">
+                        <a class="btn btn-primary" href="services.html">
+                            <span data-config-text="homeHeroPrimaryCta"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a class="btn btn-secondary" href="#how-it-works">
+                            <span data-config-text="homeHeroSecondaryCta"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="outline-card home-hero-card" aria-label="Walk-in tub comparison highlights">
+                    <div class="home-hero-card-title">
+                        <h2>Comfort checklist</h2>
+                        <span aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 2.8C12 2.8 5.8 10.2 5.8 15.3C5.8 19 8.4 21.4 12 21.4C15.6 21.4 18.2 19 18.2 15.3C18.2 10.2 12 2.8 12 2.8Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                                <path d="M9.2 15.8C9.2 17.7 10.4 18.9 12.2 18.9" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div class="icon-list">
+                        <article class="icon-row">
+                            <span class="icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 18H10V14H15V10H20" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 21H20" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M7 15V18" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M12 11V14" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M17 7V10" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </span>
+
+                            <div>
+                                <h3>Safe Entry</h3>
+                                <p>Compare low step-in design options.</p>
+                            </div>
+                        </article>
+
+                        <article class="icon-row">
+                            <span class="icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M3 8.7C5.2 6.8 7.4 6.8 9.6 8.7C11.8 10.6 14 10.6 16.2 8.7C17.8 7.3 19.4 6.9 21 7.5"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                    <path
+                                        d="M3 13C5.2 11.1 7.4 11.1 9.6 13C11.8 14.9 14 14.9 16.2 13C17.8 11.6 19.4 11.2 21 11.8"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                    <path
+                                        d="M3 17.3C5.2 15.4 7.4 15.4 9.6 17.3C11.8 19.2 14 19.2 16.2 17.3C17.8 15.9 19.4 15.5 21 16.1"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                </svg>
+                            </span>
+
+                            <div>
+                                <h3>Comfort Features</h3>
+                                <p>Review hydrotherapy-style upgrades.</p>
+                            </div>
+                        </article>
+
+                        <article class="icon-row">
+                            <span class="icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M8.5 6.5H20" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M8.5 12H20" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M8.5 17.5H20" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M3.8 6.5L5 7.7L7 5.4" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.8 12L5 13.2L7 10.9" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.8 17.5L5 18.7L7 16.4" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+
+                            <div>
+                                <h3>Provider Choice</h3>
+                                <p>Explore independent provider options.</p>
+                            </div>
+                        </article>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Compact benefits strip -->
+        <section class="home-benefits-strip" id="how-it-works" aria-label="How the platform works">
+            <div class="container-wide">
+                <div class="home-benefits-grid">
+                    <article class="home-benefit-item">
+                        <span class="home-benefit-number">01</span>
+                        <div class="home-benefit-content">
+                            <h3>Share bathing needs</h3>
+                            <p>Start with comfort goals, tub category, and ZIP code.</p>
+                        </div>
+                    </article>
+
+                    <article class="home-benefit-item">
+                        <span class="home-benefit-number">02</span>
+                        <div class="home-benefit-content">
+                            <h3>Compare options</h3>
+                            <p>Review provider categories and feature considerations.</p>
+                        </div>
+                    </article>
+
+                    <article class="home-benefit-item">
+                        <span class="home-benefit-number">03</span>
+                        <div class="home-benefit-content">
+                            <h3>Review details</h3>
+                            <p>Ask about quotes, timelines, warranties, and availability.</p>
+                        </div>
+                    </article>
+
+                    <article class="home-benefit-item">
+                        <span class="home-benefit-number">04</span>
+                        <div class="home-benefit-content">
+                            <h3>Choose independently</h3>
+                            <p>Verify provider details before making your decision.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services preview -->
+        <section class="section light-section home-services-preview" aria-labelledby="home-services-title">
+            <div class="container-wide home-services-layout">
+                <div class="home-services-copy">
+                    <div>
+                        <span class="kicker" data-config-text="servicesPreviewKicker"></span>
+                        <h2 id="home-services-title" data-config-text="servicesPreviewTitle"></h2>
+                    </div>
+
+                    <p data-config-text="servicesPreviewIntro"></p>
+
+                    <div class="btn-row">
+                        <a class="btn btn-dark" href="services.html">
+                            <span data-config-text="servicesPreviewCta"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home-services-cards" data-service-cards data-service-limit="3"></div>
+
+                <aside class="photo-frame home-services-photo">
+                    <img src="./assets/images/spa-panel.jpg" alt="Warm bathroom setting with walk-in tub style details">
+                    <div class="home-services-photo-badge">
+                        <strong>Comfort-first comparison</strong>
+                        <span>Review categories, safety features, and provider fit before deciding independently.</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Dark photo + counters + form -->
+        <section class="section dark-section home-request-section" id="request-info"
+            aria-labelledby="home-request-title">
+            <div class="container-wide home-request-layout">
+                <aside class="photo-frame home-request-photo">
+                    <img src="./assets/images/form-photo.jpg" alt="Premium bathroom with warm lighting and tub detail">
+                </aside>
+
+                <div class="home-request-copy">
+                    <div>
+                        <span class="kicker" data-config-text="homeFormKicker"></span>
+                        <h2 id="home-request-title" data-config-text="homeFormTitle"></h2>
+                    </div>
+
+                    <p data-config-text="homeFormIntro"></p>
+
+                    <div class="home-counter-grid" aria-label="Platform comparison notes">
+                        <article class="home-counter-card">
+                            <strong class="home-counter-value" data-counter-value="4" data-counter-suffix="">0</strong>
+                            <span class="home-counter-label">Tub Categories</span>
+                            <p class="home-counter-text">Organized around common walk-in tub needs.</p>
+                        </article>
+
+                        <article class="home-counter-card">
+                            <strong class="home-counter-value" data-counter-value="50"
+                                data-counter-suffix="+">0</strong>
+                            <span class="home-counter-label">Provider Match Factors</span>
+                            <p class="home-counter-text">Feature, layout, quote, and availability considerations.</p>
+                        </article>
+
+                        <article class="home-counter-card">
+                            <strong class="home-counter-value" data-counter-value="1" data-counter-suffix="">0</strong>
+                            <span class="home-counter-label">USA Coverage Notes</span>
+                            <p class="home-counter-text">Provider availability may vary by ZIP code.</p>
+                        </article>
+
+                        <article class="home-counter-card">
+                            <strong class="home-counter-value" data-counter-value="24"
+                                data-counter-suffix="/7">0</strong>
+                            <span class="home-counter-label">Request Access</span>
+                            <p class="home-counter-text">Online request form available anytime.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="home-request-form-wrap">
+                    <aside class="form-card" aria-labelledby="home-form-title">
+                        <div class="form-head">
+                            <h2 class="form-title" id="home-form-title" data-form-title></h2>
+                            <p class="form-intro" data-form-intro></p>
+                        </div>
+
+                        <form class="lead-form" data-lead-form novalidate>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label for="home-full-name" data-field-label="fullName"></label>
+                                    <input id="home-full-name" name="fullName" type="text" autocomplete="name" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="home-phone" data-field-label="phone"></label>
+                                    <input id="home-phone" name="phone" type="tel" autocomplete="tel" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="home-email" data-field-label="email"></label>
+                                    <input id="home-email" name="email" type="email" autocomplete="email" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="home-category" data-field-label="category"></label>
+                                    <div class="select-wrap">
+                                        <select id="home-category" name="category" data-category-select required>
+                                            <option value="">Select a tub category</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">
+                                <span data-form-submit></span>
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <p class="form-message" data-form-message role="status" aria-live="polite"></p>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="section light-section alt home-reviews" aria-labelledby="home-reviews-title">
+            <div class="container-wide home-reviews-layout">
+                <div class="home-reviews-copy">
+                    <div>
+                        <span class="kicker" data-config-text="reviewsKicker"></span>
+                        <h2 id="home-reviews-title" data-config-text="reviewsTitle"></h2>
+                    </div>
+
+                    <p data-config-text="reviewsIntro"></p>
+
+                    <div class="carousel-controls" aria-label="Review carousel controls">
+                        <button class="carousel-button" type="button" data-carousel-prev aria-label="Previous review">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 12H5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M11 6L5 12L11 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+
+                        <button class="carousel-button" type="button" data-carousel-next aria-label="Next review">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="home-review-carousel" data-simple-carousel>
+                    <div class="home-review-track" data-carousel-track>
+                        <article class="review-card">
+                            <span class="review-mark" aria-hidden="true">“</span>
+                            <p class="review-quote">The platform helped me organize my questions before speaking with
+                                independent providers.</p>
+                            <div class="review-author">
+                                <strong>Florida homeowner</strong>
+                                <span>Compared comfort and safety details</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card">
+                            <span class="review-mark" aria-hidden="true">“</span>
+                            <p class="review-quote">I liked that the process was clear about comparing provider options,
+                                not promising installation work.</p>
+                            <div class="review-author">
+                                <strong>Ohio homeowner</strong>
+                                <span>Reviewed quote and warranty questions</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card">
+                            <span class="review-mark" aria-hidden="true">“</span>
+                            <p class="review-quote">The categories made it easier to understand soaking, safety, and
+                                hydrotherapy-style options.</p>
+                            <div class="review-author">
+                                <strong>Arizona homeowner</strong>
+                                <span>Explored tub feature categories</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card">
+                            <span class="review-mark" aria-hidden="true">“</span>
+                            <p class="review-quote">It gave me a better starting point before asking providers about
+                                timelines and layout fit.</p>
+                            <div class="review-author">
+                                <strong>Carolina homeowner</strong>
+                                <span>Prepared provider questions</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <aside class="photo-frame home-reviews-photo">
+                    <img src="./assets/images/reviews-photo.jpg" alt="Elegant spa-inspired bathroom with warm lighting">
+                </aside>
+            </div>
+        </section>
+
+        <!-- Final note / CTA -->
+        <section class="section dark-section" aria-labelledby="home-final-cta-title">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="section-head">
+                        <span class="kicker">Independent platform</span>
+                        <h2 id="home-final-cta-title" data-config-text="finalCtaTitle"></h2>
+                        <p data-config-text="finalCtaIntro"></p>
+                    </div>
+
+                    <div class="legal-note">
+                        <p data-legal-notice></p>
+                        <br>
+                        <p data-disclaimer></p>
+                        <div class="btn-row final-cta-actions">
+                            <a class="btn btn-primary" href="contact.html#request-info">
+                                <span data-config-text="finalCtaButton"></span>
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-cookie-banner></div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+
+</html>

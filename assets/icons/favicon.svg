@@ -1,0 +1,46 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>AquaStep favicon</title>
+
+  <path
+    d="M32 4C32 4 13 27.2 13 43.1C13 54 20.8 61 32 61C43.2 61 51 54 51 43.1C51 27.2 32 4 32 4Z"
+    fill="#9EDFD8"
+  />
+
+  <path
+    d="M32 4C32 4 13 27.2 13 43.1C13 54 20.8 61 32 61C43.2 61 51 54 51 43.1C51 27.2 32 4 32 4Z"
+    stroke="#FFF0D6"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M24 42H31V37H37V32H44"
+    stroke="#16100D"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M23 50H43"
+    stroke="#16100D"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M23.5 41.8C23.5 48.2 27.4 52.2 33.4 52.2"
+    stroke="#FFF7EC"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.85"
+  />
+
+  <path
+    d="M39.5 22.5C42.1 27 44.2 32.1 44.2 38.4"
+    stroke="#FFF7EC"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.65"
+  />
+</svg>

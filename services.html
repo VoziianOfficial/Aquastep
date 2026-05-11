@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <meta name="description" content="">
+
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg?v=5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="services-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-site-header></div>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero page-hero services-hero" aria-labelledby="services-hero-title">
+            <div class="hero-media" aria-hidden="true">
+                <img data-hero-bg src="./assets/images/hero-services.jpg" alt="">
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-lines" aria-hidden="true"></div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <span class="kicker" data-config-text="servicesHeroKicker"></span>
+
+                    <h1 id="services-hero-title" data-config-text="servicesHeroTitle"></h1>
+
+                    <p data-config-text="servicesHeroIntro"></p>
+
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="contact.html#request-info">
+                            <span data-config-text="finalCtaButton"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a class="btn btn-secondary" href="#service-categories">
+                            Explore categories
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infinite services carousel -->
+        <section class="section services-swiper-section" id="service-categories"
+            aria-labelledby="services-carousel-title">
+            <div class="container-wide">
+                <div class="services-swiper-head">
+                    <div class="section-head">
+                        <span class="kicker">Tub categories</span>
+                        <h2 id="services-carousel-title">Compare four walk-in tub paths.</h2>
+                        <p class="text-muted">
+                            Review category differences before asking independent providers about fit, features, quote
+                            details, and availability.
+                        </p>
+                    </div>
+
+                    <div class="carousel-controls" aria-label="Service carousel controls">
+                        <button class="carousel-button" type="button" data-carousel-prev aria-label="Previous service">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 12H5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M11 6L5 12L11 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+
+                        <button class="carousel-button" type="button" data-carousel-next aria-label="Next service">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="services-carousel" data-simple-carousel>
+                    <div class="services-carousel-track" data-carousel-track data-service-cards data-service-limit="4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo + text split -->
+        <section class="section light-section services-split-section" aria-labelledby="services-split-title">
+            <div class="container-wide services-split-layout">
+                <aside class="photo-frame services-split-photo">
+                    <img src="./assets/images/spa-panel.jpg"
+                        alt="Warm walk-in tub bathroom detail with premium lighting">
+                </aside>
+
+                <div class="services-split-copy">
+                    <div>
+                        <span class="kicker">Compare with clarity</span>
+                        <h2 id="services-split-title">Start with features, layout, and provider fit.</h2>
+                    </div>
+
+                    <p>
+                        A walk-in tub request can involve entry style, door swing, seating comfort, jet options,
+                        bathroom dimensions,
+                        water access, electrical considerations, and warranty details. A comparison-first approach helps
+                        homeowners
+                        ask better questions before making an independent choice.
+                    </p>
+
+                    <ul class="services-feature-line" aria-label="Walk-in tub comparison points">
+                        <li>Review comfort and safety features before requesting provider information.</li>
+                        <li>Ask each provider about quote scope, timelines, warranty terms, and service availability.
+                        </li>
+                        <li>Verify licensing, insurance, product details, and local requirements before hiring.</li>
+                    </ul>
+
+                    <div class="btn-row">
+                        <a class="btn btn-dark" href="contact.html#request-info">
+                            <span data-config-text="finalCtaButton"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a class="btn btn-light-outline" href="about.html">
+                            How the platform works
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Provider comparison factors -->
+        <section class="section light-section alt services-factors-section" aria-labelledby="services-factors-title">
+            <div class="container services-factors-layout">
+                <div class="services-factors-copy">
+                    <span class="kicker">Provider comparison factors</span>
+
+                    <h2 id="services-factors-title">Details worth checking before choosing.</h2>
+
+                    <p>
+                        The right provider conversation should go beyond tub style. Homeowners should compare practical
+                        project details,
+                        written quote scope, warranty language, and provider availability before deciding.
+                    </p>
+
+                    <div class="legal-note">
+                        <p data-legal-notice></p>
+                    </div>
+                </div>
+
+                <div class="services-factor-rows" aria-label="Provider comparison factor list">
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">01</span>
+                        <div class="services-factor-text">
+                            <strong>Entry height</strong>
+                            <span>Compare threshold height, door type, seating position, and step-in comfort.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M4 18H10V14H15V10H20" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4 21H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">02</span>
+                        <div class="services-factor-text">
+                            <strong>Tub size</strong>
+                            <span>Ask how the tub dimensions fit the bathroom, doorway path, and existing layout.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M4 8V5H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M20 8V5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M4 16V19H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M20 16V19H17" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" />
+                                <path d="M8 12H16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">03</span>
+                        <div class="services-factor-text">
+                            <strong>Jets and features</strong>
+                            <span>Review hydrotherapy-style options, controls, maintenance, and feature package
+                                pricing.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M3 9C5.2 7.1 7.4 7.1 9.6 9C11.8 10.9 14 10.9 16.2 9C17.8 7.6 19.4 7.2 21 7.8"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path
+                                    d="M3 15C5.2 13.1 7.4 13.1 9.6 15C11.8 16.9 14 16.9 16.2 15C17.8 13.6 19.4 13.2 21 13.8"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">04</span>
+                        <div class="services-factor-text">
+                            <strong>Bathroom layout</strong>
+                            <span>Discuss door swing, plumbing access, drain location, walls, flooring, and surrounding
+                                fixtures.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M4 5H20V19H4V5Z" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M8 5V19" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M8 11H20" stroke="currentColor" stroke-width="1.8" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">05</span>
+                        <div class="services-factor-text">
+                            <strong>Warranty details</strong>
+                            <span>Compare written warranty terms for tub shell, door seal, parts, labor, and feature
+                                systems.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 2.8L19 5.4V10.8C19 15.2 16.3 19.2 12 21.2C7.7 19.2 5 15.2 5 10.8V5.4L12 2.8Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                                <path d="M8.8 11.8L11.1 14.1L15.6 9.4" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">06</span>
+                        <div class="services-factor-text">
+                            <strong>Provider availability</strong>
+                            <span>Confirm ZIP code coverage, appointment timing, quote timing, and expected project
+                                schedule.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 21C12 21 18.5 14.8 18.5 8.8C18.5 5.2 15.6 2.5 12 2.5C8.4 2.5 5.5 5.2 5.5 8.8C5.5 14.8 12 21 12 21Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                                <path
+                                    d="M12 11.2C13.3 11.2 14.3 10.2 14.3 8.9C14.3 7.6 13.3 6.6 12 6.6C10.7 6.6 9.7 7.6 9.7 8.9C9.7 10.2 10.7 11.2 12 11.2Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                            </svg>
+                        </span>
+                    </article>
+
+                    <article class="services-factor-row">
+                        <span class="services-factor-number">07</span>
+                        <div class="services-factor-text">
+                            <strong>Quote clarity</strong>
+                            <span>Ask what is included, what may cost extra, and how changes are documented.</span>
+                        </div>
+                        <span class="services-factor-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 3.5H18V20.5H6V3.5Z" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M9 8H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M9 12H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M9 16H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA strip -->
+        <section class="services-cta-strip" aria-labelledby="services-cta-title">
+            <div class="container services-cta-inner">
+                <div class="services-cta-copy">
+                    <h2 id="services-cta-title" data-config-text="finalCtaTitle"></h2>
+                    <p data-config-text="finalCtaIntro"></p>
+                </div>
+
+                <div class="btn-row">
+                    <a class="btn btn-primary" href="contact.html#request-info">
+                        <span data-config-text="finalCtaButton"></span>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance note -->
+        <section class="section dark-section" aria-labelledby="services-compliance-title">
+            <div class="container grid-2">
+                <div class="section-head">
+                    <span class="kicker">Independent comparison</span>
+                    <h2 id="services-compliance-title">Review providers before making your own choice.</h2>
+                    <p class="text-muted">
+                        Provider details, pricing, warranties, timelines, and available product options can vary by
+                        provider and location.
+                    </p>
+                </div>
+
+                <div class="legal-note">
+                    <p data-disclaimer></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-cookie-banner></div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/services.js"></script>
+</body>
+
+</html>

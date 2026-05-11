@@ -1,0 +1,554 @@
+/* Individual service pages */
+
+.service-detail-page .service-hero {
+    min-height: clamp(440px, 58vh, 640px);
+}
+
+.service-detail-page .service-hero .hero-content {
+    max-width: 47rem;
+}
+
+.service-detail-page .service-hero h1 {
+    max-width: 13ch;
+}
+
+/* Service intro section */
+
+.service-intro-section {
+    overflow: hidden;
+}
+
+.service-intro-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: stretch;
+}
+
+.service-intro-layout.is-reversed {
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+}
+
+.service-intro-layout.is-reversed .service-intro-photo {
+    order: 2;
+}
+
+.service-intro-layout.is-reversed .service-intro-copy {
+    order: 1;
+}
+
+.service-intro-photo {
+    min-height: 34rem;
+}
+
+.service-intro-photo::after {
+    background:
+        linear-gradient(90deg, rgba(14, 9, 7, 0.48), transparent 58%),
+        linear-gradient(180deg, transparent, rgba(14, 9, 7, 0.72));
+}
+
+.service-intro-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.15rem;
+    padding: clamp(1.35rem, 3vw, 2rem);
+    border: 1px solid var(--color-border-light);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.44), transparent 55%),
+        rgba(255, 255, 255, 0.28);
+}
+
+.service-intro-copy h2 {
+    margin: 0;
+}
+
+.service-intro-copy p {
+    color: var(--color-dark-muted);
+}
+
+.service-intro-points {
+    display: grid;
+    gap: 0.68rem;
+    margin-block: 0.25rem;
+}
+
+.service-intro-points li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+    color: var(--color-dark-text);
+    font-size: 0.94rem;
+    line-height: 1.5;
+}
+
+.service-intro-points li::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-top: 0.48rem;
+    border: 1px solid #247C74;
+    background: rgba(36, 124, 116, 0.14);
+}
+
+/* Evaluation factors */
+
+.service-evaluation-section {
+    overflow: hidden;
+}
+
+.service-evaluation-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: start;
+}
+
+.service-evaluation-copy {
+    position: sticky;
+    top: calc(var(--header-height) + 1.25rem);
+    display: grid;
+    gap: 1rem;
+}
+
+.service-evaluation-copy p {
+    color: var(--color-muted);
+}
+
+.service-evaluation-grid {
+    display: grid;
+    gap: 0.72rem;
+}
+
+.service-evaluation-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    min-height: 5.1rem;
+    padding: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(158, 223, 216, 0.08), transparent 13rem),
+        rgba(255, 255, 255, 0.035);
+    transition:
+        opacity 0.25s var(--ease),
+        transform 0.25s var(--ease),
+        border-color 0.25s var(--ease),
+        background 0.25s var(--ease);
+}
+
+.service-evaluation-card::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 3px;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    background: var(--color-aqua);
+    transition: transform 0.25s var(--ease);
+}
+
+.service-evaluation-card:hover {
+    transform: translateX(3px);
+    border-color: rgba(158, 223, 216, 0.42);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(158, 223, 216, 0.12), transparent 13rem),
+        rgba(255, 255, 255, 0.05);
+}
+
+.service-evaluation-card:hover::before {
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+.service-evaluation-card.is-muted {
+    opacity: 0.58;
+}
+
+.service-evaluation-number {
+    color: var(--color-cream);
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.service-evaluation-text {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.service-evaluation-text strong {
+    color: var(--color-heading);
+    font-size: 0.84rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.service-evaluation-text span {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+/* Light row variant */
+
+.service-evaluation-section.is-light .service-evaluation-copy p {
+    color: var(--color-dark-muted);
+}
+
+.service-evaluation-section.is-light .service-evaluation-card {
+    border-color: var(--color-border-light);
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.42), transparent),
+        rgba(255, 255, 255, 0.28);
+}
+
+.service-evaluation-section.is-light .service-evaluation-card::before {
+    background: #247C74;
+}
+
+.service-evaluation-section.is-light .service-evaluation-number {
+    color: #8B5724;
+}
+
+.service-evaluation-section.is-light .service-evaluation-text strong {
+    color: var(--color-dark-heading);
+}
+
+.service-evaluation-section.is-light .service-evaluation-text span {
+    color: var(--color-dark-muted);
+}
+
+.service-evaluation-section.is-light .service-evaluation-card:hover {
+    border-color: rgba(36, 124, 116, 0.34);
+    background:
+        linear-gradient(90deg, rgba(217, 246, 242, 0.34), transparent),
+        rgba(255, 255, 255, 0.38);
+}
+
+/* Editorial photo CTA */
+
+.service-editorial-section {
+    overflow: hidden;
+}
+
+.service-editorial-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: stretch;
+}
+
+.service-editorial-layout.is-reversed {
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
+}
+
+.service-editorial-layout.is-reversed .service-editorial-photo {
+    order: 1;
+}
+
+.service-editorial-layout.is-reversed .service-editorial-copy {
+    order: 2;
+}
+
+.service-editorial-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.15rem;
+    padding: clamp(1.35rem, 3vw, 2rem);
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(241, 201, 141, 0.1), transparent 22rem),
+        rgba(255, 255, 255, 0.035);
+}
+
+.service-editorial-copy h2 {
+    margin: 0;
+}
+
+.service-editorial-copy p {
+    color: var(--color-muted);
+}
+
+.service-editorial-photo {
+    min-height: 31rem;
+}
+
+.service-editorial-photo::after {
+    background:
+        linear-gradient(90deg, rgba(14, 9, 7, 0.42), transparent 58%),
+        linear-gradient(180deg, transparent, rgba(14, 9, 7, 0.74));
+}
+
+.service-editorial-note-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.72rem;
+    margin-block: 0.25rem;
+}
+
+.service-editorial-note {
+    display: grid;
+    gap: 0.38rem;
+    padding: 0.85rem;
+    border: 1px solid var(--color-border);
+    background: rgba(14, 9, 7, 0.22);
+}
+
+.service-editorial-note span {
+    color: var(--color-aqua);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.service-editorial-note strong {
+    color: var(--color-heading);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+/* Numbered steps variant */
+
+.service-steps-section {
+    overflow: hidden;
+}
+
+.service-steps-head {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 42rem;
+    margin-bottom: 1.35rem;
+}
+
+.service-steps-head p {
+    color: var(--color-dark-muted);
+}
+
+.service-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.service-step-card {
+    display: grid;
+    gap: 0.85rem;
+    min-height: 15rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border-light);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.24)),
+        rgba(255, 255, 255, 0.28);
+    color: var(--color-dark-text);
+    transition:
+        transform 0.25s var(--ease),
+        border-color 0.25s var(--ease),
+        box-shadow 0.25s var(--ease);
+}
+
+.service-step-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(36, 124, 116, 0.34);
+    box-shadow: 0 16px 34px rgba(29, 20, 16, 0.13);
+}
+
+.service-step-number {
+    color: #8B5724;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.service-step-card h3 {
+    margin: 0;
+    color: var(--color-dark-heading);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.service-step-card p {
+    color: var(--color-dark-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* FAQ / final request */
+
+.service-faq-section {
+    overflow: hidden;
+}
+
+.service-faq-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: start;
+}
+
+.service-faq-copy {
+    position: sticky;
+    top: calc(var(--header-height) + 1.25rem);
+    display: grid;
+    gap: 1rem;
+}
+
+.service-faq-copy p {
+    color: var(--color-muted);
+}
+
+.service-final-card {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.35rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.service-final-card p {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+/* Comparison mini strip */
+
+.service-mini-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-block: 0.35rem;
+}
+
+.service-mini-item {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.85rem;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.service-mini-item span {
+    color: var(--color-cream);
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.service-mini-item strong {
+    color: var(--color-heading);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+/* Reveal animation */
+
+.service-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.55s var(--ease),
+        transform 0.55s var(--ease);
+    transition-delay: var(--service-reveal-delay, 0ms);
+}
+
+.service-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Service page responsive */
+
+@media (max-width: 1120px) {
+
+    .service-intro-layout,
+    .service-intro-layout.is-reversed,
+    .service-editorial-layout,
+    .service-editorial-layout.is-reversed,
+    .service-evaluation-layout,
+    .service-faq-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .service-intro-layout.is-reversed .service-intro-photo,
+    .service-intro-layout.is-reversed .service-intro-copy,
+    .service-editorial-layout.is-reversed .service-editorial-photo,
+    .service-editorial-layout.is-reversed .service-editorial-copy {
+        order: initial;
+    }
+
+    .service-evaluation-copy,
+    .service-faq-copy {
+        position: static;
+    }
+
+    .service-intro-photo,
+    .service-editorial-photo {
+        min-height: 25rem;
+    }
+
+    .service-steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 780px) {
+
+    .service-editorial-note-grid,
+    .service-mini-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .service-evaluation-card {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+    }
+
+    .service-evaluation-number {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .service-intro-copy,
+    .service-editorial-copy {
+        padding: 1.1rem;
+    }
+
+    .service-intro-photo,
+    .service-editorial-photo {
+        min-height: 19rem;
+    }
+
+    .service-steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-step-card {
+        min-height: auto;
+    }
+}

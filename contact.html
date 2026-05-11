@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <meta name="description" content="">
+
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg?v=5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script type="application/ld+json" data-faq-schema="contact"></script>
+</head>
+
+<body class="contact-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-site-header></div>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero page-hero contact-hero" aria-labelledby="contact-hero-title">
+            <div class="hero-media" aria-hidden="true">
+                <img data-hero-bg src="./assets/images/hero-contact.jpg" alt="">
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-lines" aria-hidden="true"></div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <span class="kicker" data-config-text="contactHeroKicker"></span>
+
+                    <h1 id="contact-hero-title" data-config-text="contactHeroTitle"></h1>
+
+                    <p data-config-text="contactHeroIntro"></p>
+
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="#request-info">
+                            <span data-config-text="finalCtaButton"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a class="btn btn-secondary" data-phone-link>
+                            <span data-phone-text></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M7.2 4.5L9.5 4C10 3.9 10.5 4.2 10.7 4.7L12 7.8C12.2 8.3 12.1 8.8 11.7 9.2L10.4 10.5C11.4 12.7 13.2 14.5 15.5 15.6L16.8 14.3C17.2 13.9 17.7 13.8 18.2 14L21.3 15.3C21.8 15.5 22.1 16 22 16.5L21.5 18.8C21.3 19.5 20.7 20 20 20C10.6 20 4 13.4 4 4C4 3.3 4.5 2.7 5.2 2.5Z"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compact contact form -->
+        <section class="section light-section contact-form-section" id="request-info"
+            aria-labelledby="contact-form-title">
+            <div class="container contact-form-layout">
+                <div class="contact-form-copy">
+                    <div>
+                        <span class="kicker">Request information</span>
+                        <h2 id="contact-form-title" data-form-title></h2>
+                    </div>
+
+                    <p data-form-intro></p>
+
+                    <ul class="contact-form-points" aria-label="Request information notes">
+                        <li>Use the form to organize basic walk-in tub request details.</li>
+                        <li>Provider availability, quotes, features, and timelines may vary by ZIP code.</li>
+                        <li>Homeowners should verify licensing, insurance, quote details, and warranty terms directly.
+                        </li>
+                    </ul>
+
+                    <div class="legal-note">
+                        <p data-legal-notice></p>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <aside class="form-card" aria-label="Walk-in tub provider information request form">
+                        <div class="form-head">
+                            <h3 class="form-title" data-form-title></h3>
+                            <p class="form-intro" data-form-intro></p>
+                        </div>
+
+                        <form class="contact-form" data-contact-form novalidate>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label for="contact-full-name" data-field-label="fullName"></label>
+                                    <input id="contact-full-name" name="fullName" type="text" autocomplete="name"
+                                        required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="contact-phone" data-field-label="phone"></label>
+                                    <input id="contact-phone" name="phone" type="tel" autocomplete="tel" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="contact-email" data-field-label="email"></label>
+                                    <input id="contact-email" name="email" type="email" autocomplete="email" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="contact-zip" data-field-label="zip"></label>
+                                    <input id="contact-zip" name="zip" type="text" inputmode="numeric"
+                                        autocomplete="postal-code" required>
+                                </div>
+
+                                <div class="form-field full">
+                                    <label for="contact-category" data-field-label="category"></label>
+                                    <div class="select-wrap">
+                                        <select id="contact-category" name="category" data-category-select required>
+                                            <option value="">Select a tub category</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-field full">
+                                    <label for="contact-message" data-field-label="message"></label>
+                                    <textarea id="contact-message" name="message" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">
+                                <span data-form-submit></span>
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+
+                            <p class="form-message" data-form-message role="status" aria-live="polite"></p>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact details strip -->
+        <section class="contact-details-strip" aria-labelledby="contact-details-title">
+            <div class="container-wide">
+                <h2 class="sr-only" id="contact-details-title">Contact details</h2>
+
+                <div class="contact-details-grid">
+                    <article class="contact-detail-card">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M7.2 4.5L9.5 4C10 3.9 10.5 4.2 10.7 4.7L12 7.8C12.2 8.3 12.1 8.8 11.7 9.2L10.4 10.5C11.4 12.7 13.2 14.5 15.5 15.6L16.8 14.3C17.2 13.9 17.7 13.8 18.2 14L21.3 15.3C21.8 15.5 22.1 16 22 16.5L21.5 18.8C21.3 19.5 20.7 20 20 20C10.6 20 4 13.4 4 4C4 3.3 4.5 2.7 5.2 2.5Z"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+
+                        <div class="contact-detail-content">
+                            <strong>Phone</strong>
+                            <a data-phone-link>
+                                <span data-phone-text></span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="contact-detail-card">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M4 6.5H20V18H4V6.5Z" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M4.8 7.3L12 13L19.2 7.3" stroke="currentColor" stroke-width="1.8" />
+                            </svg>
+                        </span>
+
+                        <div class="contact-detail-content">
+                            <strong>Email</strong>
+                            <a data-email-link>
+                                <span data-email-text></span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="contact-detail-card">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 21C12 21 18.5 14.8 18.5 8.8C18.5 5.2 15.6 2.5 12 2.5C8.4 2.5 5.5 5.2 5.5 8.8C5.5 14.8 12 21 12 21Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                                <path
+                                    d="M12 11.2C13.3 11.2 14.3 10.2 14.3 8.9C14.3 7.6 13.3 6.6 12 6.6C10.7 6.6 9.7 7.6 9.7 8.9C9.7 10.2 10.7 11.2 12 11.2Z"
+                                    stroke="currentColor" stroke-width="1.8" />
+                            </svg>
+                        </span>
+
+                        <div class="contact-detail-content">
+                            <strong>Address</strong>
+                            <span data-address-text></span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map -->
+        <section class="section light-section alt contact-map-section" aria-labelledby="contact-map-title">
+            <div class="container contact-map-layout">
+                <div class="contact-map-copy">
+                    <span class="kicker" data-config-text="mapKicker"></span>
+
+                    <h2 id="contact-map-title" data-config-text="mapTitle"></h2>
+
+                    <p data-config-text="mapIntro"></p>
+
+                    <div class="factor-list">
+                        <div class="factor-row">
+                            <span>01</span>
+                            <p>Platform contact information is separate from independent provider service locations.</p>
+                        </div>
+
+                        <div class="factor-row">
+                            <span>02</span>
+                            <p>Provider availability, appointment areas, and ZIP code coverage can vary.</p>
+                        </div>
+
+                        <div class="factor-row">
+                            <span>03</span>
+                            <p>Homeowners should confirm provider details directly before scheduling or hiring.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="contact-map-card" aria-label="Styled map card">
+                    <span class="map-road is-one" aria-hidden="true"></span>
+                    <span class="map-road is-two" aria-hidden="true"></span>
+                    <span class="map-road is-three" aria-hidden="true"></span>
+                    <span class="map-water" aria-hidden="true"></span>
+
+                    <span class="map-label is-one">Clearwater</span>
+                    <span class="map-label is-two">Wellness Way</span>
+                    <span class="map-label is-three">USA Platform</span>
+
+                    <div class="map-pin-card">
+                        <div class="map-pin-head">
+                            <span class="map-pin-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M12 21C12 21 18.5 14.8 18.5 8.8C18.5 5.2 15.6 2.5 12 2.5C8.4 2.5 5.5 5.2 5.5 8.8C5.5 14.8 12 21 12 21Z"
+                                        stroke="currentColor" stroke-width="1.8" />
+                                    <path
+                                        d="M12 11.2C13.3 11.2 14.3 10.2 14.3 8.9C14.3 7.6 13.3 6.6 12 6.6C10.7 6.6 9.7 7.6 9.7 8.9C9.7 10.2 10.7 11.2 12 11.2Z"
+                                        stroke="currentColor" stroke-width="1.8" />
+                                </svg>
+                            </span>
+
+                            <div>
+                                <strong data-company-name></strong>
+                                <span data-service-area></span>
+                            </div>
+                        </div>
+
+                        <address data-address-text></address>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- FAQ / final CTA -->
+        <section class="section dark-section contact-faq-section" aria-labelledby="contact-faq-title">
+            <div class="container contact-faq-layout">
+                <div class="contact-faq-copy">
+                    <span class="kicker">Questions before requesting</span>
+
+                    <h2 id="contact-faq-title">Helpful notes before comparing providers.</h2>
+
+                    <p>
+                        The answers below explain the platform role and help homeowners prepare better provider
+                        questions.
+                    </p>
+
+                    <div class="contact-final-card">
+                        <p data-legal-notice></p>
+
+                        <a class="btn btn-primary" href="#request-info">
+                            <span data-config-text="finalCtaButton"></span>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="faq-list" data-faq-list="contact"></div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="section light-section" aria-labelledby="contact-disclaimer-title">
+            <div class="container grid-2">
+                <div class="section-head">
+                    <span class="kicker">Platform reminder</span>
+                    <h2 id="contact-disclaimer-title">Independent providers should be reviewed directly.</h2>
+                    <p>
+                        Before choosing any provider, homeowners should review quote scope, licensing, insurance,
+                        timelines,
+                        product specifications, and warranty language.
+                    </p>
+                </div>
+
+                <div class="legal-note">
+                    <p data-disclaimer></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-cookie-banner></div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/contact.js"></script>
+</body>
+
+</html>

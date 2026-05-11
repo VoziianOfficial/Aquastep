@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <meta name="description" content="">
+
+<link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg?v=5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="legal-page" data-legal-page="terms">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-site-header></div>
+
+    <main id="main">
+        <!-- Legal hero -->
+        <section class="legal-hero" aria-labelledby="legal-page-title">
+            <div class="container">
+                <div class="legal-hero-inner">
+                    <span class="kicker" data-legal-kicker></span>
+
+                    <h1 id="legal-page-title" data-legal-title></h1>
+
+                    <p data-legal-intro></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal content -->
+        <section class="legal-content-section" aria-labelledby="legal-content-title">
+            <div class="container legal-layout">
+                <aside class="legal-sidebar" aria-label="Legal page navigation">
+                    <div class="legal-sidebar-card">
+                        <h2 class="legal-sidebar-title" id="legal-content-title">Legal pages</h2>
+
+                        <nav class="legal-nav" data-legal-nav aria-label="Legal navigation"></nav>
+                    </div>
+
+                    <div class="legal-sidebar-card">
+                        <h2 class="legal-sidebar-title">Platform role</h2>
+
+                        <p class="legal-sidebar-note">
+                            <span data-company-name></span> is a provider matching platform, not a contractor or direct
+                            walk-in tub service company.
+                        </p>
+                    </div>
+
+                    <div class="legal-sidebar-card">
+                        <h2 class="legal-sidebar-title">Contact</h2>
+
+                        <p class="legal-sidebar-note">
+                            <span data-company-id></span>
+                        </p>
+
+                        <p class="legal-sidebar-note">
+                            <span data-address-text></span>
+                        </p>
+
+                        <p class="legal-sidebar-note">
+                            <a data-email-link>
+                                <span data-email-text></span>
+                            </a>
+                        </p>
+                    </div>
+                </aside>
+
+                <article class="legal-document">
+                    <div data-legal-sections></div>
+
+                    <section class="legal-disclaimer-card" aria-labelledby="terms-disclaimer-title">
+                        <h2 id="terms-disclaimer-title">Disclaimer</h2>
+                        <p data-disclaimer></p>
+                    </section>
+
+                    <section class="legal-platform-card" aria-labelledby="terms-platform-title">
+                        <h2 id="terms-platform-title">Use of the platform.</h2>
+
+                        <p>
+                            By using this website, visitors understand that <span data-company-name></span> provides
+                            information
+                            and provider matching support only. Independent providers are responsible for their own
+                            quotes,
+                            availability, product details, warranties, contracts, licensing, insurance, timelines, and
+                            service work.
+                        </p>
+
+                        <div class="legal-platform-grid">
+                            <article class="legal-platform-item">
+                                <span>01</span>
+                                <strong>No direct installation</strong>
+                            </article>
+
+                            <article class="legal-platform-item">
+                                <span>02</span>
+                                <strong>No provider guarantee</strong>
+                            </article>
+
+                            <article class="legal-platform-item">
+                                <span>03</span>
+                                <strong>Homeowner verification</strong>
+                            </article>
+                        </div>
+
+                        <p data-legal-notice></p>
+                    </section>
+                </article>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="legal-bottom-cta" aria-labelledby="legal-bottom-title">
+            <div class="container legal-bottom-inner">
+                <div class="legal-bottom-copy">
+                    <h2 id="legal-bottom-title" data-config-text="finalCtaTitle"></h2>
+                    <p data-config-text="finalCtaIntro"></p>
+                </div>
+
+                <div class="btn-row">
+                    <a class="btn btn-primary" href="contact.html#request-info">
+                        <span data-config-text="finalCtaButton"></span>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-cookie-banner></div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/legal.js"></script>
+</body>
+
+</html>
