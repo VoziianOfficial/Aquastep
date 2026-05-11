@@ -316,13 +316,50 @@
         document.querySelectorAll(SELECTORS.navigation).forEach((nav) => {
             nav.innerHTML = config.navigation
                 .map((item) => {
-                    const active = item.href === currentPageName() ? " is-active" : "";
+                    const label = item.label || "";
+                    const href = item.href || "";
+                    const normalizedHref = href.replace("./", "").toLowerCase();
+
+                    const active = normalizedHref === currentPageName().toLowerCase() ? " is-active" : "";
+
+                    const isServices =
+                        normalizedHref.includes("services") ||
+                        label.toLowerCase().includes("service") ||
+                        label.toLowerCase().includes("services");
+
+                    if (isServices && Array.isArray(config.services) && config.services.length) {
+                        const serviceLinks = config.services
+                            .map((service) => {
+                                return `
+                                <a class="nav-dropdown-link" href="${escapeHtml(service.href)}" data-allow-static="true">
+                                    <span>${escapeHtml(service.shortTitle || service.title)}</span>
+                                    ${getIcon("arrow-right")}
+                                </a>
+                            `;
+                            })
+                            .join("");
+
+                        return `
+                        <div class="nav-dropdown" data-allow-static="true">
+                            <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
+                                ${escapeHtml(label)}
+                            </a>
+
+                            <div class="nav-dropdown-panel" aria-label="Services list">
+                                <div class="nav-dropdown-inner">
+                                    <span class="nav-dropdown-kicker">Walk-In Tub Categories</span>
+                                    ${serviceLinks}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    }
 
                     return `
-            <a class="nav-link${active}" href="${escapeHtml(item.href)}" data-allow-static="true">
-              ${escapeHtml(item.label)}
-            </a>
-          `;
+                    <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
+                        ${escapeHtml(label)}
+                    </a>
+                `;
                 })
                 .join("");
         });
@@ -333,14 +370,16 @@
                     const active = item.href === currentPageName() ? " is-active" : "";
 
                     return `
-            <a class="mobile-nav-link${active}" href="${escapeHtml(item.href)}" data-mobile-menu-close data-allow-static="true">
-              <span>${escapeHtml(item.label)}</span>
-              ${getIcon("arrow-right")}
-            </a>
-          `;
+                    <a class="mobile-nav-link${active}" href="${escapeHtml(item.href)}" data-mobile-menu-close data-allow-static="true">
+                        <span>${escapeHtml(item.label)}</span>
+                        ${getIcon("arrow-right")}
+                    </a>
+                `;
                 })
                 .join("");
         });
+
+        console.log("Desktop dropdown navigation rendered");
     }
 
     function renderFooter() {
