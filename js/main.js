@@ -67,7 +67,7 @@
         return window.SITE_CONFIG || null;
     }
 
-    function interpolateConfigText(value) {
+    function resolveConfigText(value) {
         if (value === null || value === undefined) return value;
         if (typeof value !== "string") return value;
 
@@ -85,13 +85,21 @@
             phoneLabel: config.phoneLabel,
             email: config.email,
             address: config.address && config.address.full,
-            serviceArea: config.serviceArea
+            serviceArea: config.serviceArea,
+            footerText: config.footerText,
+            disclaimer: config.disclaimer,
+            legalNotice: config.legalNotice
         };
 
-        return value.replace(/\{([a-zA-Z]+)\}/g, (match, key) => {
+        return value.replace(/\{\{([a-zA-Z]+)\}\}|\{([a-zA-Z]+)\}/g, (match, mustacheKey, braceKey) => {
+            const key = mustacheKey || braceKey;
             const replacement = replacements[key];
             return replacement === null || replacement === undefined ? match : String(replacement);
         });
+    }
+
+    function interpolateConfigText(value) {
+        return resolveConfigText(value);
     }
 
     function currentPageName() {
@@ -1282,6 +1290,7 @@
 
     window.AquaStepSite = {
         interpolateConfigText,
+        resolveConfigText,
         applyConfig,
         auditHardcodedBusinessData,
         renderServiceCards,
