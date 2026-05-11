@@ -187,40 +187,91 @@
             </div>
         </section>
 
-        <!-- Services preview -->
-        <section class="section light-section home-services-preview" aria-labelledby="home-services-title">
-            <div class="container-wide home-services-layout">
-                <div class="home-services-copy">
-                    <div>
-                        <span class="kicker" data-config-text="servicesPreviewKicker"></span>
-                        <h2 id="home-services-title" data-config-text="servicesPreviewTitle"></h2>
-                    </div>
-
-                    <p data-config-text="servicesPreviewIntro"></p>
-
-                    <div class="btn-row">
-                        <a class="btn btn-dark" href="services.html">
-                            <span data-config-text="servicesPreviewCta"></span>
-                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="home-services-cards" data-service-cards data-service-limit="3"></div>
-
-                <aside class="photo-frame home-services-photo">
-                    <img src="./assets/images/spa-panel.jpg" alt="Warm bathroom setting with walk-in tub style details">
-                    <div class="home-services-photo-badge">
-                        <strong>Comfort-first comparison</strong>
-                        <span>Review categories, safety features, and provider fit before deciding independently.</span>
-                    </div>
-                </aside>
+    <!-- Services preview -->
+    <section class="home-model-strip" aria-labelledby="home-services-title">
+        <div class="home-model-strip-inner">
+            <div class="home-model-copy">
+                <span class="home-model-kicker">Walk-In Tubs</span>
+    
+                <h2 id="home-services-title">
+                    Comfort Meets <span>Independence</span>
+                </h2>
+    
+                <p>
+                    Compare walk-in tub provider options for safer, more comfortable bathing — without pressure.
+                </p>
+    
+                <a class="home-model-btn" href="services.html">
+                    View All Models
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
             </div>
-        </section>
+    
+            <div class="home-model-cards">
+                <a class="home-model-card" href="soaking-walk-in-tubs.html">
+                    <img src="./assets/images/service-soaking.jpg" alt="">
+                    <span class="home-model-card-overlay"></span>
+    
+                    <span class="home-model-card-content">
+                        <strong>Soaking Tubs</strong>
+                        <span>Deep soak for total relaxation</span>
+                        <small>Compare options</small>
+                    </span>
+    
+                    <span class="home-model-arrow">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 5L16 12L8 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+    
+                <a class="home-model-card" href="hydrotherapy-walk-in-tubs.html">
+                    <img src="./assets/images/service-hydrotherapy.jpg" alt="">
+                    <span class="home-model-card-overlay"></span>
+    
+                    <span class="home-model-card-content">
+                        <strong>Therapy Tubs</strong>
+                        <span>Hydrotherapy-style comfort features</span>
+                        <small>Compare features</small>
+                    </span>
+    
+                    <span class="home-model-arrow">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 5L16 12L8 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+    
+                <a class="home-model-card" href="luxury-walk-in-tubs.html">
+                    <img src="./assets/images/service-luxury.jpg" alt="">
+                    <span class="home-model-card-overlay"></span>
+    
+                    <span class="home-model-card-content">
+                        <strong>Premium Tubs</strong>
+                        <span>Top-tier comfort and finish options</span>
+                        <small>Compare premium</small>
+                    </span>
+    
+                    <span class="home-model-arrow">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 5L16 12L8 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+    
+            <aside class="home-model-photo" aria-hidden="true">
+                <img src="./assets/images/spa-panel.jpg" alt="">
+            </aside>
+        </div>
+    </section>
 
         <!-- Dark photo + counters + form -->
         <section class="section dark-section home-request-section" id="request-info"
@@ -318,85 +369,75 @@
             </div>
         </section>
 
-        <!-- Reviews -->
-        <section class="section light-section alt home-reviews" aria-labelledby="home-reviews-title">
-            <div class="container-wide home-reviews-layout">
-                <div class="home-reviews-copy">
-                    <div>
-                        <span class="kicker" data-config-text="reviewsKicker"></span>
-                        <h2 id="home-reviews-title" data-config-text="reviewsTitle"></h2>
-                    </div>
-
-                    <p data-config-text="reviewsIntro"></p>
-
-                    <div class="carousel-controls" aria-label="Review carousel controls">
-                        <button class="carousel-button" type="button" data-carousel-prev aria-label="Previous review">
-                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
-                                <path d="M19 12H5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                <path d="M11 6L5 12L11 18" stroke="currentColor" stroke-width="1.8"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-
-                        <button class="carousel-button" type="button" data-carousel-next aria-label="Next review">
-                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
+    <!-- Reviews -->
+<section class="home-stories-strip" aria-labelledby="home-reviews-title">
+        <div class="home-stories-inner">
+            <div class="home-stories-copy">
+                <span class="home-stories-kicker">What homeowners say</span>
+    
+                <h2 id="home-reviews-title">
+                    Real Stories.<br>
+                    Real Comfort.
+                </h2>
+    
+                <div class="home-stories-controls" aria-label="Review carousel controls">
+                    <button class="home-stories-arrow" type="button" data-carousel-prev aria-label="Previous review">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+    
+                    <button class="home-stories-arrow" type="button" data-carousel-next aria-label="Next review">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
                 </div>
-
-                <div class="home-review-carousel" data-simple-carousel>
-                    <div class="home-review-track" data-carousel-track>
-                        <article class="review-card">
-                            <span class="review-mark" aria-hidden="true">“</span>
-                            <p class="review-quote">The platform helped me organize my questions before speaking with
-                                independent providers.</p>
-                            <div class="review-author">
-                                <strong>Florida homeowner</strong>
-                                <span>Compared comfort and safety details</span>
-                            </div>
-                        </article>
-
-                        <article class="review-card">
-                            <span class="review-mark" aria-hidden="true">“</span>
-                            <p class="review-quote">I liked that the process was clear about comparing provider options,
-                                not promising installation work.</p>
-                            <div class="review-author">
-                                <strong>Ohio homeowner</strong>
-                                <span>Reviewed quote and warranty questions</span>
-                            </div>
-                        </article>
-
-                        <article class="review-card">
-                            <span class="review-mark" aria-hidden="true">“</span>
-                            <p class="review-quote">The categories made it easier to understand soaking, safety, and
-                                hydrotherapy-style options.</p>
-                            <div class="review-author">
-                                <strong>Arizona homeowner</strong>
-                                <span>Explored tub feature categories</span>
-                            </div>
-                        </article>
-
-                        <article class="review-card">
-                            <span class="review-mark" aria-hidden="true">“</span>
-                            <p class="review-quote">It gave me a better starting point before asking providers about
-                                timelines and layout fit.</p>
-                            <div class="review-author">
-                                <strong>Carolina homeowner</strong>
-                                <span>Prepared provider questions</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <aside class="photo-frame home-reviews-photo">
-                    <img src="./assets/images/reviews-photo.jpg" alt="Elegant spa-inspired bathroom with warm lighting">
-                </aside>
             </div>
-        </section>
+    
+            <div class="home-stories-carousel">
+                <div class="home-stories-track" data-carousel-track>
+                    <article class="home-story-card">
+                        <div class="home-story-stars" aria-label="Five star review">★★★★★</div>
+                        <p>
+                            “The platform helped me organize my questions before speaking with independent providers.”
+                        </p>
+                        <span>— Florida homeowner</span>
+                    </article>
+    
+                    <article class="home-story-card">
+                        <div class="home-story-stars" aria-label="Five star review">★★★★★</div>
+                        <p>
+                            “The categories made it easier to compare safety, comfort, and hydrotherapy-style options.”
+                        </p>
+                        <span>— Arizona homeowner</span>
+                    </article>
+    
+                    <article class="home-story-card">
+                        <div class="home-story-stars" aria-label="Five star review">★★★★★</div>
+                        <p>
+                            “It gave me a clearer starting point before asking providers about quotes and timelines.”
+                        </p>
+                        <span>— Ohio homeowner</span>
+                    </article>
+    
+                    <article class="home-story-card">
+                        <div class="home-story-stars" aria-label="Five star review">★★★★★</div>
+                        <p>
+                            “I liked that the process was clear about comparing providers, not promising installation.”
+                        </p>
+                        <span>— Carolina homeowner</span>
+                    </article>
+                </div>
+            </div>
+    
+            <aside class="home-stories-photo" aria-hidden="true">
+                <img src="./assets/images/reviews-photo.jpg" alt="">
+            </aside>
+        </div>
+    </section>
 
         <!-- Final note / CTA -->
         <section class="section dark-section" aria-labelledby="home-final-cta-title">

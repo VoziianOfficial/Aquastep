@@ -13,9 +13,9 @@
 
         renderHomeHeroPoints(config);
         renderHomeCounters(config);
-        renderHomeReviews(config);
-        initHomeCounterAnimation();
-        initHomeReviewAutoplay();
+        // renderHomeReviews(config);
+        // initHomeCounterAnimation();
+        // initHomeReviewAutoplay();
         initHomeParallax();
     }
 
@@ -311,5 +311,210 @@
             .replaceAll(">", "&gt;")
             .replaceAll('"', "&quot;")
             .replaceAll("'", "&#039;");
+    }
+})();
+
+/* FINAL infinite stories carousel — circular prev / next */
+
+(function () {
+    document.addEventListener("DOMContentLoaded", initStoriesInfiniteCarousel);
+
+    function initStoriesInfiniteCarousel() {
+        const section = document.querySelector(".home-stories-strip");
+
+        if (!section) return;
+
+        const viewport = section.querySelector(".home-stories-carousel");
+        const track = section.querySelector(".home-stories-track");
+        const prev = section.querySelector("[data-carousel-prev]");
+        const next = section.querySelector("[data-carousel-next]");
+
+        if (!viewport || !track || !prev || !next) return;
+
+        let currentIndex = 0;
+        let cloneCount = 0;
+        let autoplayId = null;
+        let isLocked = false;
+
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function getOriginalCards() {
+            return Array.from(track.querySelectorAll(".home-story-card:not([data-story-clone])"));
+        }
+
+        function getAllCards() {
+            return Array.from(track.querySelectorAll(".home-story-card"));
+        }
+
+        function getGap() {
+            const styles = window.getComputedStyle(track);
+            return parseFloat(styles.columnGap || styles.gap || "0") || 0;
+        }
+
+        function getVisibleCount() {
+            const originals = getOriginalCards();
+
+            if (!originals.length) return 1;
+
+            const cardWidth = originals[0].getBoundingClientRect().width;
+            const viewportWidth = viewport.getBoundingClientRect().width;
+            const gap = getGap();
+
+            if (!cardWidth || !viewportWidth) return 1;
+
+            return Math.max(1, Math.floor((viewportWidth + gap) / (cardWidth + gap)));
+        }
+
+        function clearClones() {
+            track.querySelectorAll("[data-story-clone]").forEach((clone) => {
+                clone.remove();
+            });
+        }
+
+        function buildLoop() {
+            clearClones();
+
+            const originals = getOriginalCards();
+
+            if (originals.length <= 1) return;
+
+            cloneCount = Math.min(getVisibleCount() + 1, originals.length);
+
+            const firstClones = originals.slice(0, cloneCount).map((card) => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute("data-story-clone", "true");
+                clone.setAttribute("aria-hidden", "true");
+                return clone;
+            });
+
+            const lastClones = originals.slice(-cloneCount).map((card) => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute("data-story-clone", "true");
+                clone.setAttribute("aria-hidden", "true");
+                return clone;
+            });
+
+            lastClones.reverse().forEach((clone) => {
+                track.insertBefore(clone, track.firstChild);
+            });
+
+            firstClones.forEach((clone) => {
+                track.appendChild(clone);
+            });
+
+            currentIndex = cloneCount;
+            moveToCurrent(false);
+        }
+
+        function moveToCurrent(animate) {
+            const cards = getAllCards();
+            const target = cards[currentIndex];
+
+            if (!target) return;
+
+            track.style.transition = animate ? "" : "none";
+            track.style.transform = `translate3d(${-target.offsetLeft}px, 0, 0)`;
+
+            if (!animate) {
+                window.requestAnimationFrame(() => {
+                    track.style.transition = "";
+                });
+            }
+        }
+
+        function normalizeLoopPosition() {
+            const originals = getOriginalCards();
+            const originalCount = originals.length;
+
+            if (!originalCount) return;
+
+            if (currentIndex >= cloneCount + originalCount) {
+                currentIndex = cloneCount;
+                moveToCurrent(false);
+            }
+
+            if (currentIndex < cloneCount) {
+                currentIndex = cloneCount + originalCount - 1;
+                moveToCurrent(false);
+            }
+        }
+
+        function goNext(event) {
+            if (event) event.preventDefault();
+            if (isLocked) return;
+
+            isLocked = true;
+            currentIndex += 1;
+            moveToCurrent(true);
+            restartAutoplay();
+        }
+
+        function goPrev(event) {
+            if (event) event.preventDefault();
+            if (isLocked) return;
+
+            isLocked = true;
+            currentIndex -= 1;
+            moveToCurrent(true);
+            restartAutoplay();
+        }
+
+        track.addEventListener("transitionend", () => {
+            normalizeLoopPosition();
+            isLocked = false;
+        });
+
+        next.addEventListener("click", goNext);
+        prev.addEventListener("click", goPrev);
+
+        function startAutoplay() {
+            if (reduceMotion) return;
+
+            stopAutoplay();
+
+            autoplayId = window.setInterval(() => {
+                goNext();
+            }, 3600);
+        }
+
+        function stopAutoplay() {
+            if (!autoplayId) return;
+
+            window.clearInterval(autoplayId);
+            autoplayId = null;
+        }
+
+        function restartAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        section.addEventListener("mouseenter", stopAutoplay);
+        section.addEventListener("mouseleave", startAutoplay);
+        section.addEventListener("focusin", stopAutoplay);
+        section.addEventListener("focusout", startAutoplay);
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        let resizeTimer = null;
+
+        window.addEventListener("resize", () => {
+            window.clearTimeout(resizeTimer);
+
+            resizeTimer = window.setTimeout(() => {
+                buildLoop();
+            }, 180);
+        });
+
+        buildLoop();
+        startAutoplay();
+
+        console.log("Infinite stories carousel ready");
     }
 })();

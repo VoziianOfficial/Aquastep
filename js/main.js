@@ -886,28 +886,129 @@
 
             if (!track) return;
 
-            const scrollAmount = () => {
-                const firstCard = track.querySelector(":scope > *");
-                return firstCard ? firstCard.getBoundingClientRect().width + 16 : 320;
+            const cards = Array.from(track.children);
+
+            if (cards.length <= 1) return;
+
+            let currentIndex = 0;
+            let autoplayId = null;
+            let isPaused = false;
+
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const shouldAutoplay = carousel.hasAttribute("data-carousel-autoplay") && !reduceMotion;
+
+            const getVisibleCount = () => {
+                const firstCard = cards[0];
+
+                if (!firstCard) return 1;
+
+                const cardWidth = firstCard.getBoundingClientRect().width;
+                const trackWidth = track.getBoundingClientRect().width;
+
+                if (!cardWidth || !trackWidth) return 1;
+
+                return Math.max(1, Math.floor(trackWidth / cardWidth));
             };
 
-            if (prev) {
-                prev.addEventListener("click", () => {
-                    track.scrollBy({
-                        left: -scrollAmount(),
-                        behavior: "smooth"
-                    });
+            const getMaxIndex = () => {
+                return Math.max(0, cards.length - getVisibleCount());
+            };
+
+            const goTo = (index) => {
+                const maxIndex = getMaxIndex();
+
+                if (index > maxIndex) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = maxIndex;
+                } else {
+                    currentIndex = index;
+                }
+
+                const targetCard = cards[currentIndex];
+
+                if (!targetCard) return;
+
+                track.scrollTo({
+                    left: targetCard.offsetLeft,
+                    behavior: "smooth"
+                });
+            };
+
+            const goNext = () => {
+                goTo(currentIndex + 1);
+            };
+
+            const goPrev = () => {
+                goTo(currentIndex - 1);
+            };
+
+            if (next) {
+                next.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    goNext();
                 });
             }
 
-            if (next) {
-                next.addEventListener("click", () => {
-                    track.scrollBy({
-                        left: scrollAmount(),
-                        behavior: "smooth"
-                    });
+            if (prev) {
+                prev.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    goPrev();
                 });
             }
+
+            const startAutoplay = () => {
+                if (!shouldAutoplay) return;
+
+                stopAutoplay();
+
+                autoplayId = window.setInterval(() => {
+                    if (isPaused) return;
+                    goNext();
+                }, 3600);
+            };
+
+            const stopAutoplay = () => {
+                if (!autoplayId) return;
+
+                window.clearInterval(autoplayId);
+                autoplayId = null;
+            };
+
+            carousel.addEventListener("mouseenter", () => {
+                isPaused = true;
+            });
+
+            carousel.addEventListener("mouseleave", () => {
+                isPaused = false;
+            });
+
+            carousel.addEventListener("focusin", () => {
+                isPaused = true;
+            });
+
+            carousel.addEventListener("focusout", () => {
+                isPaused = false;
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    stopAutoplay();
+                } else {
+                    startAutoplay();
+                }
+            });
+
+            window.addEventListener("resize", () => {
+                currentIndex = 0;
+
+                track.scrollTo({
+                    left: 0,
+                    behavior: "auto"
+                });
+            });
+
+            startAutoplay();
         });
     }
 
