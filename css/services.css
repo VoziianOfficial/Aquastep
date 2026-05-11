@@ -805,3 +805,52 @@
         max-width: 42rem;
     }
 }
+
+/* Services carousel — stable infinite version */
+
+.services-carousel {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden !important;
+}
+
+.services-carousel-track {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+    transform: translate3d(0, 0, 0);
+    transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.services-carousel-track .service-card {
+    flex: 0 0 calc((100% - 2rem) / 3) !important;
+    max-width: calc((100% - 2rem) / 3) !important;
+    min-width: 0 !important;
+}
+
+/* Tablet: exactly 2 cards visible */
+@media (max-width: 1180px) {
+    .services-carousel-track .service-card {
+        flex: 0 0 calc((100% - 1rem) / 2) !important;
+        max-width: calc((100% - 1rem) / 2) !important;
+    }
+}
+
+/* Mobile: exactly 1 card visible, no neighbor visible */
+@media (max-width: 640px) {
+    .services-carousel-track {
+        gap: 0 !important;
+    }
+
+    .services-carousel-track .service-card {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}

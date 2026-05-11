@@ -1,209 +1,236 @@
 "use strict";
 
 (function () {
-    document.addEventListener("DOMContentLoaded", initServicesPage);
-
-    function initServicesPage() {
-        const config = window.SITE_CONFIG;
-
-        if (!config) {
-            console.warn("SITE_CONFIG is missing on services page.");
-            return;
-        }
-
-        prepareServicesLoop();
-        initServicesAutoplay();
-        initServicesFactorHover();
-    }
-
-    function prepareServicesLoop() {
-        const track = document.querySelector(".services-carousel-track");
-
-        if (!track) return;
-
-        const cards = Array.from(track.children);
-
-        if (!cards.length) return;
-
-        const alreadyCloned = track.hasAttribute("data-loop-ready");
-
-        if (alreadyCloned) return;
-
-        cards.forEach((card) => {
-            const clone = card.cloneNode(true);
-            clone.setAttribute("aria-hidden", "true");
-            clone.setAttribute("tabindex", "-1");
-
-            const links = clone.querySelectorAll("a");
-
-            links.forEach((link) => {
-                link.setAttribute("tabindex", "-1");
+    document.addEventListener("DOMContentLoaded", () => {
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                initServicesInfiniteCarousel();
+                initServicesFactorHover();
             });
-
-            track.appendChild(clone);
         });
+    });
 
-        track.setAttribute("data-loop-ready", "true");
-    }
-
-    function initServicesAutoplay() {
+    function initServicesInfiniteCarousel() {
         const section = document.querySelector(".services-swiper-section");
 
         if (!section) return;
 
-        const carousel = section.querySelector(".services-carousel");
+        const viewport = section.querySelector(".services-carousel");
         const track = section.querySelector(".services-carousel-track");
         const prev = section.querySelector("[data-carousel-prev]");
         const next = section.querySelector("[data-carousel-next]");
 
-        if (!carousel || !track) return;
+        if (!viewport || !track || !prev || !next) return;
 
-        if (track.dataset.servicesCarouselReady === "true") return;
-        track.dataset.servicesCarouselReady = "true";
+        let currentIndex = 0;
+        let cloneCount = 0;
+        let autoplayId = null;
+        let isLocked = false;
+        let lockTimer = null;
 
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        let autoplayId = null;
-        let isPaused = false;
+        function getOriginalCards() {
+            return Array.from(track.querySelectorAll(".service-card:not([data-service-clone])"));
+        }
 
-        const getGap = () => {
+        function getAllCards() {
+            return Array.from(track.querySelectorAll(".service-card"));
+        }
+
+        function getGap() {
             const styles = window.getComputedStyle(track);
-            return parseFloat(styles.columnGap || styles.gap || "16") || 16;
-        };
+            return parseFloat(styles.columnGap || styles.gap || "0") || 0;
+        }
 
-        const getStep = () => {
-            const firstCard = track.querySelector(".service-card");
+        function getVisibleCount() {
+            const originals = getOriginalCards();
 
-            if (!firstCard) return 320;
+            if (!originals.length) return 1;
 
-            return firstCard.getBoundingClientRect().width + getGap();
-        };
+            const cardWidth = originals[0].getBoundingClientRect().width;
+            const viewportWidth = viewport.getBoundingClientRect().width;
+            const gap = getGap();
 
-        const getMaxScroll = () => {
-            return Math.max(0, track.scrollWidth - track.clientWidth);
-        };
+            if (!cardWidth || !viewportWidth) return 1;
 
-        const moveNext = () => {
-            const maxScroll = getMaxScroll();
+            return Math.max(1, Math.round((viewportWidth + gap) / (cardWidth + gap)));
+        }
 
-            if (maxScroll <= 0) return;
+        function clearClones() {
+            track.querySelectorAll("[data-service-clone]").forEach((clone) => {
+                clone.remove();
+            });
+        }
 
-            if (track.scrollLeft >= maxScroll - 12) {
-                track.scrollTo({
-                    left: 0,
-                    behavior: "auto"
-                });
+        function cloneCard(card) {
+            const clone = card.cloneNode(true);
 
+            clone.setAttribute("data-service-clone", "true");
+            clone.setAttribute("aria-hidden", "true");
+            clone.setAttribute("tabindex", "-1");
+
+            clone.querySelectorAll("a, button").forEach((item) => {
+                item.setAttribute("tabindex", "-1");
+            });
+
+            return clone;
+        }
+
+        function buildLoop() {
+            clearClones();
+
+            const originals = getOriginalCards();
+
+            if (originals.length <= 1) return;
+
+            cloneCount = originals.length;
+
+            const firstClones = originals.slice(0, cloneCount).map(cloneCard);
+            const lastClones = originals.slice(-cloneCount).map(cloneCard);
+
+            lastClones.reverse().forEach((clone) => {
+                track.insertBefore(clone, track.firstChild);
+            });
+
+            firstClones.forEach((clone) => {
+                track.appendChild(clone);
+            });
+
+            currentIndex = cloneCount;
+            moveToCurrent(false);
+        }
+
+        function moveToCurrent(animate) {
+            const cards = getAllCards();
+            const target = cards[currentIndex];
+
+            if (!target) return;
+
+            track.style.transition = animate ? "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)" : "none";
+            track.style.transform = `translate3d(${-target.offsetLeft}px, 0, 0)`;
+
+            if (!animate) {
                 window.requestAnimationFrame(() => {
-                    track.scrollBy({
-                        left: getStep(),
-                        behavior: "smooth"
-                    });
+                    track.style.transition = "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)";
                 });
+            }
+        }
 
+        function normalizeLoopPosition() {
+            const originals = getOriginalCards();
+            const originalCount = originals.length;
+
+            if (!originalCount) return;
+
+            if (currentIndex >= cloneCount + originalCount) {
+                currentIndex = cloneCount;
+                moveToCurrent(false);
                 return;
             }
 
-            track.scrollBy({
-                left: getStep(),
-                behavior: "smooth"
-            });
-        };
-
-        const movePrev = () => {
-            const maxScroll = getMaxScroll();
-
-            if (maxScroll <= 0) return;
-
-            if (track.scrollLeft <= 12) {
-                track.scrollTo({
-                    left: maxScroll,
-                    behavior: "auto"
-                });
-
-                window.requestAnimationFrame(() => {
-                    track.scrollBy({
-                        left: -getStep(),
-                        behavior: "smooth"
-                    });
-                });
-
-                return;
+            if (currentIndex < cloneCount) {
+                currentIndex = cloneCount + originalCount - 1;
+                moveToCurrent(false);
             }
+        }
 
-            track.scrollBy({
-                left: -getStep(),
-                behavior: "smooth"
-            });
-        };
+        function unlockAfterMove() {
+            window.clearTimeout(lockTimer);
 
-        const start = () => {
+            lockTimer = window.setTimeout(() => {
+                normalizeLoopPosition();
+                isLocked = false;
+            }, 620);
+        }
+
+        function goNext(event) {
+            if (event) event.preventDefault();
+            if (isLocked) return;
+
+            isLocked = true;
+            currentIndex += 1;
+            moveToCurrent(true);
+            unlockAfterMove();
+
+            if (event) restartAutoplay();
+        }
+
+        function goPrev(event) {
+            if (event) event.preventDefault();
+            if (isLocked) return;
+
+            isLocked = true;
+            currentIndex -= 1;
+            moveToCurrent(true);
+            unlockAfterMove();
+
+            if (event) restartAutoplay();
+        }
+
+        track.addEventListener("transitionend", (event) => {
+            if (event.target !== track) return;
+            if (event.propertyName !== "transform") return;
+
+            window.clearTimeout(lockTimer);
+            normalizeLoopPosition();
+            isLocked = false;
+        });
+
+        next.addEventListener("click", goNext);
+        prev.addEventListener("click", goPrev);
+
+        function startAutoplay() {
             if (reduceMotion) return;
 
-            stop();
+            stopAutoplay();
 
             autoplayId = window.setInterval(() => {
-                if (isPaused) return;
-                moveNext();
-            }, 3600);
-        };
+                goNext();
+            }, 2800);
+        }
 
-        const stop = () => {
+        function stopAutoplay() {
             if (!autoplayId) return;
 
             window.clearInterval(autoplayId);
             autoplayId = null;
-        };
-
-        const restart = () => {
-            stop();
-            start();
-        };
-
-        if (prev) {
-            prev.addEventListener("click", (event) => {
-                event.preventDefault();
-                isPaused = false;
-                movePrev();
-                restart();
-            });
         }
 
-        if (next) {
-            next.addEventListener("click", (event) => {
-                event.preventDefault();
-                isPaused = false;
-                moveNext();
-                restart();
-            });
+        function restartAutoplay() {
+            stopAutoplay();
+            startAutoplay();
         }
 
-        carousel.addEventListener("mouseenter", () => {
-            isPaused = true;
-        });
-
-        carousel.addEventListener("mouseleave", () => {
-            isPaused = false;
-        });
-
-        carousel.addEventListener("focusin", () => {
-            isPaused = true;
-        });
-
-        carousel.addEventListener("focusout", () => {
-            isPaused = false;
-        });
+        section.addEventListener("mouseenter", stopAutoplay);
+        section.addEventListener("mouseleave", startAutoplay);
+        section.addEventListener("focusin", stopAutoplay);
+        section.addEventListener("focusout", startAutoplay);
 
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
-                stop();
+                stopAutoplay();
             } else {
-                start();
+                startAutoplay();
             }
         });
 
-        start();
+        let resizeTimer = null;
+
+        window.addEventListener("resize", () => {
+            window.clearTimeout(resizeTimer);
+
+            resizeTimer = window.setTimeout(() => {
+                stopAutoplay();
+                buildLoop();
+                startAutoplay();
+            }, 180);
+        });
+
+        buildLoop();
+        startAutoplay();
     }
+
     function initServicesFactorHover() {
         const rows = document.querySelectorAll(".services-factor-row");
 
