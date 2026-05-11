@@ -13,9 +13,7 @@
 
         renderHomeHeroPoints(config);
         renderHomeCounters(config);
-        // renderHomeReviews(config);
-        // initHomeCounterAnimation();
-        // initHomeReviewAutoplay();
+        initLiveHomeCounters();
         initHomeParallax();
     }
 
@@ -335,6 +333,7 @@
         let cloneCount = 0;
         let autoplayId = null;
         let isLocked = false;
+        let lockTimer = null;
 
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -439,6 +438,15 @@
             }
         }
 
+        function unlockAfterTransition() {
+            window.clearTimeout(lockTimer);
+
+            lockTimer = window.setTimeout(() => {
+                normalizeLoopPosition();
+                isLocked = false;
+            }, 560);
+        }
+
         function goNext(event) {
             if (event) event.preventDefault();
             if (isLocked) return;
@@ -447,6 +455,7 @@
             currentIndex += 1;
             moveToCurrent(true);
             restartAutoplay();
+            unlockAfterTransition();
         }
 
         function goPrev(event) {
@@ -457,13 +466,19 @@
             currentIndex -= 1;
             moveToCurrent(true);
             restartAutoplay();
+            unlockAfterTransition();
         }
 
-        track.addEventListener("transitionend", () => {
+      
+
+        track.addEventListener("transitionend", (event) => {
+            if (event.target !== track) return;
+            if (event.propertyName !== "transform") return;
+
+            window.clearTimeout(lockTimer);
             normalizeLoopPosition();
             isLocked = false;
         });
-
         next.addEventListener("click", goNext);
         prev.addEventListener("click", goPrev);
 
@@ -518,3 +533,81 @@
         console.log("Infinite stories carousel ready");
     }
 })();
+
+
+
+function initLiveHomeCounters() {
+    const counters = document.querySelectorAll(
+        ".home-counter-grid .home-counter-value[data-counter-value]"
+    );
+
+    if (!counters.length) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const animateCounter = (counter) => {
+        if (counter.dataset.counterAnimated === "true") return;
+
+        counter.dataset.counterAnimated = "true";
+
+        const target = Number(counter.getAttribute("data-counter-value")) || 0;
+        const suffix = counter.getAttribute("data-counter-suffix") || "";
+        const duration = 1300;
+
+        if (reduceMotion) {
+            counter.textContent = `${target}${suffix}`;
+            return;
+        }
+
+        let startTime = null;
+
+        counter.textContent = `0${suffix}`;
+
+        const tick = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.round(target * eased);
+
+            counter.textContent = `${currentValue}${suffix}`;
+
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                counter.textContent = `${target}${suffix}`;
+            }
+        };
+
+        requestAnimationFrame(tick);
+    };
+
+    counters.forEach((counter) => {
+        const suffix = counter.getAttribute("data-counter-suffix") || "";
+        counter.dataset.counterAnimated = "false";
+        counter.textContent = `0${suffix}`;
+    });
+
+    if (!("IntersectionObserver" in window)) {
+        counters.forEach(animateCounter);
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                animateCounter(entry.target);
+                currentObserver.unobserve(entry.target);
+            });
+        },
+        {
+            threshold: 0.35
+        }
+    );
+
+    counters.forEach((counter) => {
+        observer.observe(counter);
+    });
+}

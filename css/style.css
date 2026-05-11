@@ -2160,3 +2160,153 @@ body.menu-open .mobile-menu-toggle span::after {
 .footer-logo:hover .footer-logo-name {
     color: var(--color-aqua);
 }
+
+
+/* Tablet & mobile: equal centered typography for key home sections */
+
+@media (max-width: 1080px) {
+
+    /* Общая центровка нужных секций */
+    .home-hero .hero-content,
+    .home-services-copy,
+    .home-request-copy,
+    .home-request-form-wrap .form-card,
+    .final-cta,
+    .home-final-cta,
+    section:has(#home-final-cta-title) {
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Конкретные заголовки */
+    #home-hero-title,
+    #home-services-title,
+    #home-request-title,
+    #home-final-cta-title,
+    .form-title {
+        max-width: 100%;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-wrap: balance;
+        line-height: 0.96;
+    }
+
+    /* Стараемся держать в одну строку на планшетах */
+    #home-services-title,
+    #home-request-title,
+    #home-final-cta-title,
+    .form-title {
+        white-space: nowrap;
+        font-size: clamp(2rem, 4.2vw, 3.15rem);
+    }
+
+    #home-hero-title {
+        white-space: nowrap;
+        font-size: clamp(2.55rem, 5.2vw, 4.7rem);
+    }
+
+    /* Параграфы под заголовками */
+    .home-hero .hero-content p,
+    .home-services-copy p,
+    .home-request-copy p,
+    .final-cta p,
+    .home-final-cta p,
+    section:has(#home-final-cta-title) p {
+        max-width: 34rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    /* Кикеры и кнопки */
+    .home-hero .kicker,
+    .home-services-copy .kicker,
+    .home-request-copy .kicker,
+    section:has(#home-final-cta-title) .kicker {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-hero .kicker::before,
+    .home-services-copy .kicker::before,
+    .home-request-copy .kicker::before,
+    section:has(#home-final-cta-title) .kicker::before {
+        display: none;
+    }
+
+    .home-hero .btn-row,
+    .home-services-copy .btn-row,
+    .home-request-copy .btn-row,
+    section:has(#home-final-cta-title) .btn-row {
+        justify-content: center;
+    }
+
+    /* Форма тоже ровно */
+    .form-card .form-head {
+        text-align: center;
+        justify-items: center;
+    }
+
+    .form-card .form-intro {
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .home-hero .hero-content,
+    .home-services-copy,
+    .home-request-copy,
+    .home-request-form-wrap .form-card,
+    .final-cta,
+    .home-final-cta,
+    section:has(#home-final-cta-title) {
+        width: 100%;
+        gap: 0.85rem;
+    }
+
+    /* На телефоне оставляем аккуратно по центру и не даем вылезать */
+    #home-hero-title,
+    #home-services-title,
+    #home-request-title,
+    #home-final-cta-title,
+    .form-title {
+        max-width: min(100%, 12.5ch);
+        white-space: normal;
+        text-align: center;
+        line-height: 0.98;
+        text-wrap: balance;
+    }
+
+    #home-hero-title {
+        font-size: clamp(2.4rem, 12vw, 3.35rem);
+    }
+
+    #home-services-title,
+    #home-request-title,
+    #home-final-cta-title {
+        font-size: clamp(2.05rem, 10vw, 2.85rem);
+    }
+
+    .form-title {
+        font-size: clamp(1.65rem, 8vw, 2.2rem);
+    }
+
+    .home-hero .hero-content p,
+    .home-services-copy p,
+    .home-request-copy p,
+    .form-card .form-intro,
+    section:has(#home-final-cta-title) p {
+        max-width: 30rem;
+        text-align: center;
+    }
+}

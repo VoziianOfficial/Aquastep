@@ -827,14 +827,19 @@
     .home-model-copy {
         min-height: auto;
         padding: 0;
+        text-align: center;
+        align-items: center;
     }
 
     .home-model-copy h2 {
         max-width: 13ch;
+        margin-inline: auto;
     }
 
     .home-model-copy p {
-        max-width: 30rem;
+        max-width: 52ch;
+        margin-inline: auto;
+        text-wrap: balance;
     }
 
     .home-model-cards {
@@ -1215,5 +1220,149 @@
     .home-story-card {
         flex-basis: 88% !important;
         max-width: 88% !important;
+    }
+}
+
+/* Stories carousel responsive polish — tablet 2 cards, mobile 1 card */
+
+@media (max-width: 1180px) {
+    .home-stories-strip {
+        padding-block: 2rem;
+    }
+
+    .home-stories-inner {
+        grid-template-columns: minmax(190px, 240px) minmax(0, 1fr) !important;
+        gap: 1rem !important;
+        align-items: stretch;
+    }
+
+    .home-stories-photo {
+        display: none !important;
+    }
+
+    .home-stories-carousel {
+        width: 100%;
+        min-width: 0;
+        overflow: hidden !important;
+    }
+
+    .home-stories-track {
+        display: flex !important;
+        gap: 0.85rem !important;
+        overflow: visible !important;
+        will-change: transform;
+        transition: transform 0.42s var(--ease);
+    }
+
+    .home-story-card {
+        flex: 0 0 calc((100% - 0.85rem) / 2) !important;
+        min-height: 10.5rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .home-stories-strip {
+        padding-block: 2.25rem;
+    }
+
+    .home-stories-inner {
+        width: min(100% - 1.25rem, 1360px);
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .home-stories-copy {
+        min-height: auto;
+        padding-right: 0;
+    }
+
+    .home-stories-copy h2 {
+        max-width: 12ch;
+        margin-bottom: 0.9rem;
+        font-size: clamp(2.05rem, 11vw, 3rem);
+    }
+
+    .home-stories-controls {
+        margin-top: 0.15rem;
+    }
+
+    .home-stories-arrow {
+        width: 2.15rem;
+        height: 2.15rem;
+    }
+
+    .home-stories-carousel {
+        overflow: hidden !important;
+    }
+
+    .home-stories-track {
+        gap: 0 !important;
+    }
+
+    .home-story-card {
+        flex: 0 0 100% !important;
+        min-height: 11rem;
+        padding: 1.05rem;
+    }
+}
+/* Smooth stories carousel anti-jump fix */
+
+.home-stories-inner {
+    overflow: hidden;
+}
+
+.home-stories-carousel {
+    overflow: hidden !important;
+    min-width: 0 !important;
+}
+
+.home-stories-track {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.48s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.home-story-card {
+    flex: 0 0 calc((100% - 1.7rem) / 3) !important;
+    max-width: calc((100% - 1.7rem) / 3) !important;
+    transform: translateZ(0);
+}
+
+/* Tablet: exactly 2 cards */
+@media (max-width: 1180px) {
+    .home-stories-inner {
+        grid-template-columns: minmax(190px, 240px) minmax(0, 1fr) !important;
+    }
+
+    .home-stories-photo {
+        display: none !important;
+    }
+
+    .home-story-card {
+        flex: 0 0 calc((100% - 0.85rem) / 2) !important;
+        max-width: calc((100% - 0.85rem) / 2) !important;
+    }
+}
+
+/* Mobile: exactly 1 card */
+@media (max-width: 760px) {
+    .home-stories-inner {
+        grid-template-columns: 1fr !important;
+    }
+
+    .home-stories-track {
+        gap: 0 !important;
+    }
+
+    .home-story-card {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 }
