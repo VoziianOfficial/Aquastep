@@ -47,32 +47,44 @@
     }
 
     function initServicesAutoplay() {
-        const carousel = document.querySelector(".services-carousel");
-        const track = document.querySelector(".services-carousel-track");
+        const section = document.querySelector(".services-swiper-section");
+
+        if (!section) return;
+
+        const carousel = section.querySelector(".services-carousel");
+        const track = section.querySelector(".services-carousel-track");
+        const prev = section.querySelector("[data-carousel-prev]");
+        const next = section.querySelector("[data-carousel-next]");
 
         if (!carousel || !track) return;
 
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (track.dataset.servicesCarouselReady === "true") return;
+        track.dataset.servicesCarouselReady = "true";
 
-        if (reduceMotion) return;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         let autoplayId = null;
         let isPaused = false;
+
+        const getGap = () => {
+            const styles = window.getComputedStyle(track);
+            return parseFloat(styles.columnGap || styles.gap || "16") || 16;
+        };
 
         const getStep = () => {
             const firstCard = track.querySelector(".service-card");
 
             if (!firstCard) return 320;
 
-            const cardWidth = firstCard.getBoundingClientRect().width;
-            const styles = window.getComputedStyle(track);
-            const gap = parseFloat(styles.columnGap || styles.gap || "16") || 16;
-
-            return cardWidth + gap;
+            return firstCard.getBoundingClientRect().width + getGap();
         };
 
-        const resetIfNeeded = () => {
-            const maxScroll = track.scrollWidth - track.clientWidth;
+        const getMaxScroll = () => {
+            return Math.max(0, track.scrollWidth - track.clientWidth);
+        };
+
+        const moveNext = () => {
+            const maxScroll = getMaxScroll();
 
             if (maxScroll <= 0) return;
 
@@ -81,13 +93,16 @@
                     left: 0,
                     behavior: "auto"
                 });
+
+                window.requestAnimationFrame(() => {
+                    track.scrollBy({
+                        left: getStep(),
+                        behavior: "smooth"
+                    });
+                });
+
+                return;
             }
-        };
-
-        const moveNext = () => {
-            if (isPaused) return;
-
-            resetIfNeeded();
 
             track.scrollBy({
                 left: getStep(),
@@ -95,9 +110,42 @@
             });
         };
 
+        const movePrev = () => {
+            const maxScroll = getMaxScroll();
+
+            if (maxScroll <= 0) return;
+
+            if (track.scrollLeft <= 12) {
+                track.scrollTo({
+                    left: maxScroll,
+                    behavior: "auto"
+                });
+
+                window.requestAnimationFrame(() => {
+                    track.scrollBy({
+                        left: -getStep(),
+                        behavior: "smooth"
+                    });
+                });
+
+                return;
+            }
+
+            track.scrollBy({
+                left: -getStep(),
+                behavior: "smooth"
+            });
+        };
+
         const start = () => {
+            if (reduceMotion) return;
+
             stop();
-            autoplayId = window.setInterval(moveNext, 3600);
+
+            autoplayId = window.setInterval(() => {
+                if (isPaused) return;
+                moveNext();
+            }, 3600);
         };
 
         const stop = () => {
@@ -106,6 +154,29 @@
             window.clearInterval(autoplayId);
             autoplayId = null;
         };
+
+        const restart = () => {
+            stop();
+            start();
+        };
+
+        if (prev) {
+            prev.addEventListener("click", (event) => {
+                event.preventDefault();
+                isPaused = false;
+                movePrev();
+                restart();
+            });
+        }
+
+        if (next) {
+            next.addEventListener("click", (event) => {
+                event.preventDefault();
+                isPaused = false;
+                moveNext();
+                restart();
+            });
+        }
 
         carousel.addEventListener("mouseenter", () => {
             isPaused = true;
@@ -123,16 +194,6 @@
             isPaused = false;
         });
 
-        track.addEventListener(
-            "scroll",
-            () => {
-                window.requestAnimationFrame(resetIfNeeded);
-            },
-            {
-                passive: true
-            }
-        );
-
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
                 stop();
@@ -143,7 +204,6 @@
 
         start();
     }
-
     function initServicesFactorHover() {
         const rows = document.querySelectorAll(".services-factor-row");
 
