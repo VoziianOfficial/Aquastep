@@ -2310,3 +2310,17 @@ body.menu-open .mobile-menu-toggle span::after {
         text-align: center;
     }
 }
+
+.cookie-title {
+    max-width: none !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 560px) {
+    .cookie-title {
+        font-size: clamp(0.95rem, 4.2vw, 1.15rem) !important;
+        line-height: 1.1 !important;
+    }
+}
