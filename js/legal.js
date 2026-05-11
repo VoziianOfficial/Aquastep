@@ -3,6 +3,11 @@
 (function () {
     document.addEventListener("DOMContentLoaded", initLegalPage);
 
+    function interpolate(value) {
+        const interpolator = window.AquaStepSite && window.AquaStepSite.interpolateConfigText;
+        return interpolator ? interpolator(value) : value;
+    }
+
     function initLegalPage() {
         const config = window.SITE_CONFIG;
 
@@ -51,17 +56,17 @@
         const intro = document.querySelector("[data-legal-intro]");
 
         if (kicker) {
-            kicker.textContent = pageData.kicker;
+            kicker.textContent = interpolate(pageData.kicker);
             kicker.setAttribute("data-allow-static", "true");
         }
 
         if (title) {
-            title.textContent = pageData.title;
+            title.textContent = interpolate(pageData.title);
             title.setAttribute("data-allow-static", "true");
         }
 
         if (intro) {
-            intro.textContent = pageData.intro;
+            intro.textContent = interpolate(pageData.intro);
             intro.setAttribute("data-allow-static", "true");
         }
     }
@@ -71,16 +76,16 @@
 
         if (!container || !Array.isArray(pageData.sections)) return;
 
-        container.innerHTML = pageData.sections
-            .map((section) => {
-                return `
-          <section class="legal-section-card">
-            <h2>${escapeHtml(section.title)}</h2>
-            <p>${escapeHtml(section.text)}</p>
-          </section>
-        `;
-            })
-            .join("");
+	        container.innerHTML = pageData.sections
+	            .map((section) => {
+	                return `
+	          <section class="legal-section-card">
+	            <h2>${escapeHtml(interpolate(section.title))}</h2>
+	            <p>${escapeHtml(interpolate(section.text))}</p>
+	          </section>
+	        `;
+	            })
+	            .join("");
 
         container.setAttribute("data-allow-static", "true");
     }

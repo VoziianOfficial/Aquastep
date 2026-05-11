@@ -67,6 +67,33 @@
         return window.SITE_CONFIG || null;
     }
 
+    function interpolateConfigText(value) {
+        if (value === null || value === undefined) return value;
+        if (typeof value !== "string") return value;
+
+        const config = getConfig();
+
+        if (!config) return value;
+
+        const replacements = {
+            companyName: config.companyName,
+            companyId: config.companyId,
+            brandShortName: config.brand && config.brand.shortName,
+            phone: config.phone,
+            phoneButtonText: config.phoneButtonText || config.phone,
+            phoneHref: config.phoneHref,
+            phoneLabel: config.phoneLabel,
+            email: config.email,
+            address: config.address && config.address.full,
+            serviceArea: config.serviceArea
+        };
+
+        return value.replace(/\{([a-zA-Z]+)\}/g, (match, key) => {
+            const replacement = replacements[key];
+            return replacement === null || replacement === undefined ? match : String(replacement);
+        });
+    }
+
     function currentPageName() {
         const path = window.location.pathname;
         const fileName = path.substring(path.lastIndexOf("/") + 1);
@@ -84,7 +111,7 @@
         }
 
         if (meta.title) {
-            document.title = meta.title;
+            document.title = interpolateConfigText(meta.title);
         }
 
         let description = document.querySelector("meta[name='description']");
@@ -95,7 +122,7 @@
         }
 
         if (meta.description) {
-            description.setAttribute("content", meta.description);
+            description.setAttribute("content", interpolateConfigText(meta.description));
         }
     }
 
@@ -109,6 +136,8 @@
         setText("[data-footer-text]", config.footerText);
         setText("[data-service-area]", config.serviceArea);
         setText("[data-address-text]", config.address.full);
+        setText("[data-address-line1]", config.address.line1);
+        setText("[data-address-city]", config.address.city);
         setText("[data-disclaimer]", config.disclaimer);
         setText("[data-legal-notice]", config.legalNotice);
 
@@ -119,28 +148,35 @@
         setLinks("[data-phone-link]", config.phoneHref, config.phoneLabel);
         setLinks("[data-email-link]", `mailto:${config.email}`, `Email ${config.brand.shortName}`);
 
+        const mapQuery = config.address && config.address.full ? config.address.full : "";
+        const mapHref =
+            config.mapHref ||
+            (mapQuery ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}` : "");
+
+        setLinks("[data-map-link]", mapHref, `Open map for ${config.companyName}`);
+
         document.querySelectorAll("[data-config-text]").forEach((element) => {
             const key = element.getAttribute("data-config-text");
             const value = config.text && config.text[key];
 
             if (value) {
-                element.textContent = value;
+                element.textContent = interpolateConfigText(value);
                 markConfigRendered(element);
             }
         });
 
         document.querySelectorAll("[data-form-title]").forEach((element) => {
-            element.textContent = config.forms.leadTitle;
+            element.textContent = interpolateConfigText(config.forms.leadTitle);
             markConfigRendered(element);
         });
 
         document.querySelectorAll("[data-form-intro]").forEach((element) => {
-            element.textContent = config.forms.leadIntro;
+            element.textContent = interpolateConfigText(config.forms.leadIntro);
             markConfigRendered(element);
         });
 
         document.querySelectorAll("[data-form-submit]").forEach((element) => {
-            element.textContent = config.forms.submitText;
+            element.textContent = interpolateConfigText(config.forms.submitText);
             markConfigRendered(element);
         });
 
@@ -149,7 +185,7 @@
             const label = config.forms.fields && config.forms.fields[key];
 
             if (label) {
-                element.textContent = label;
+                element.textContent = interpolateConfigText(label);
                 markConfigRendered(element);
             }
         });
@@ -177,7 +213,7 @@
             const value = service[field];
 
             if (value) {
-                element.textContent = value;
+                element.textContent = interpolateConfigText(value);
                 markConfigRendered(element);
             }
         });
@@ -193,10 +229,10 @@
     }
 
     function setText(selector, value) {
-        if (!value) return;
+        if (value === null || value === undefined || value === "") return;
 
         document.querySelectorAll(selector).forEach((element) => {
-            element.textContent = value;
+            element.textContent = interpolateConfigText(String(value));
             markConfigRendered(element);
         });
     }
@@ -208,7 +244,7 @@
             }
 
             if (ariaLabel) {
-                element.setAttribute("aria-label", ariaLabel);
+                element.setAttribute("aria-label", interpolateConfigText(String(ariaLabel)));
             }
 
             markConfigRendered(element);
@@ -228,7 +264,7 @@
         mount.innerHTML = `
       <header class="site-header" data-generated-header>
         <div class="container-wide site-header-inner">
-          <a class="site-logo" href="index.html" aria-label="${escapeHtml(config.brand.logoLabel)}" data-allow-static="true">
+	          <a class="site-logo" href="index.html" aria-label="${escapeHtml(interpolateConfigText(config.brand.logoLabel))}" data-allow-static="true">
             ${getIcon("drop", "site-logo-icon")}
           <span class="site-logo-text">
          <span class="site-logo-name" data-company-name data-allow-static="true"></span>
@@ -332,7 +368,7 @@
                             .map((service) => {
                                 return `
                                 <a class="nav-dropdown-link" href="${escapeHtml(service.href)}" data-allow-static="true">
-                                    <span>${escapeHtml(service.shortTitle || service.title)}</span>
+                                    <span>${escapeHtml(interpolateConfigText(service.shortTitle || service.title))}</span>
                                     ${getIcon("arrow-right")}
                                 </a>
                             `;
@@ -341,8 +377,8 @@
 
                         return `
                         <div class="nav-dropdown" data-allow-static="true">
-                            <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
-                                ${escapeHtml(label)}
+	                            <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
+	                                ${escapeHtml(interpolateConfigText(label))}
                             </a>
 
                             <div class="nav-dropdown-panel" aria-label="Services list">
@@ -356,8 +392,8 @@
                     }
 
                     return `
-                    <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
-                        ${escapeHtml(label)}
+	                    <a class="nav-link${active}" href="${escapeHtml(href)}" data-allow-static="true">
+	                        ${escapeHtml(interpolateConfigText(label))}
                     </a>
                 `;
                 })
@@ -370,8 +406,8 @@
                     const active = item.href === currentPageName() ? " is-active" : "";
 
                     return `
-                    <a class="mobile-nav-link${active}" href="${escapeHtml(item.href)}" data-mobile-menu-close data-allow-static="true">
-                        <span>${escapeHtml(item.label)}</span>
+	                    <a class="mobile-nav-link${active}" href="${escapeHtml(item.href)}" data-mobile-menu-close data-allow-static="true">
+	                        <span>${escapeHtml(interpolateConfigText(item.label))}</span>
                         ${getIcon("arrow-right")}
                     </a>
                 `;
@@ -393,7 +429,7 @@
         <div class="container-wide">
           <div class="footer-main">
             <div class="footer-brand">
-              <a class="footer-logo" href="index.html" aria-label="${escapeHtml(config.brand.logoLabel)}" data-allow-static="true">
+	              <a class="footer-logo" href="index.html" aria-label="${escapeHtml(interpolateConfigText(config.brand.logoLabel))}" data-allow-static="true">
                 ${getIcon("drop", "site-logo-icon")}
                 <span class="footer-logo-name" data-company-name data-allow-static="true"></span>
               </a>
@@ -468,10 +504,10 @@
             container.innerHTML = config.navigation
                 .map((item) => {
                     return `
-            <a class="footer-link" href="${escapeHtml(item.href)}" data-allow-static="true">
-              ${escapeHtml(item.label)}
-            </a>
-          `;
+	            <a class="footer-link" href="${escapeHtml(item.href)}" data-allow-static="true">
+	              ${escapeHtml(interpolateConfigText(item.label))}
+	            </a>
+	          `;
                 })
                 .join("");
 
@@ -523,14 +559,14 @@
           ${getIcon(service.icon)}
         </span>
 
-        <span class="service-card-content">
-          <h3>${escapeHtml(service.title)}</h3>
-          <p>${escapeHtml(service.summary)}</p>
-          <span class="card-arrow">
-            Compare options
-            ${getIcon("arrow-right")}
-          </span>
-        </span>
+	        <span class="service-card-content">
+	          <h3>${escapeHtml(interpolateConfigText(service.title))}</h3>
+	          <p>${escapeHtml(interpolateConfigText(service.summary))}</p>
+	          <span class="card-arrow">
+	            Compare options
+	            ${getIcon("arrow-right")}
+	          </span>
+	        </span>
       </a>
     `;
     }
@@ -557,14 +593,14 @@
                                 ? "footer-link"
                                 : "service-link";
 
-                        return `
-              <a class="${className}" href="${escapeHtml(service.href)}" data-mobile-menu-close data-allow-static="true">
-                <span>${escapeHtml(service.shortTitle || service.title)}</span>
-                ${isMobile ? getIcon("arrow-right") : ""}
-              </a>
-            `;
-                    })
-                    .join("");
+	                        return `
+	              <a class="${className}" href="${escapeHtml(service.href)}" data-mobile-menu-close data-allow-static="true">
+	                <span>${escapeHtml(interpolateConfigText(service.shortTitle || service.title))}</span>
+	                ${isMobile ? getIcon("arrow-right") : ""}
+	              </a>
+	            `;
+	                    })
+	                    .join("");
             });
         });
     }
@@ -573,18 +609,18 @@
         const config = getConfig();
         const currentValue = select.value;
 
-        select.innerHTML = `
-      <option value="">${escapeHtml(config.forms.categoryPlaceholder)}</option>
-      ${config.services
-                .map((service) => {
-                    return `
-            <option value="${escapeHtml(service.id)}">
-              ${escapeHtml(service.title)}
-            </option>
-          `;
-                })
-                .join("")}
-    `;
+	        select.innerHTML = `
+	      <option value="">${escapeHtml(interpolateConfigText(config.forms.categoryPlaceholder))}</option>
+	      ${config.services
+	                .map((service) => {
+	                    return `
+	            <option value="${escapeHtml(service.id)}">
+	              ${escapeHtml(interpolateConfigText(service.title))}
+	            </option>
+	          `;
+	                })
+	                .join("")}
+	    `;
 
         if (currentValue) {
             select.value = currentValue;
@@ -638,36 +674,36 @@
 
         return `
       <article class="faq-item">
-        <button class="faq-button" type="button" id="${buttonId}" aria-expanded="false" aria-controls="${panelId}">
-          ${escapeHtml(faq.question)}
-          <span aria-hidden="true">+</span>
-        </button>
+	        <button class="faq-button" type="button" id="${buttonId}" aria-expanded="false" aria-controls="${panelId}">
+	          ${escapeHtml(interpolateConfigText(faq.question))}
+	          <span aria-hidden="true">+</span>
+	        </button>
 
         <div class="faq-panel" id="${panelId}" role="region" aria-labelledby="${buttonId}">
-          <div class="faq-panel-inner">
-            <p>${escapeHtml(faq.answer)}</p>
-          </div>
-        </div>
-      </article>
-    `;
+	          <div class="faq-panel-inner">
+	            <p>${escapeHtml(interpolateConfigText(faq.answer))}</p>
+	          </div>
+	        </div>
+	      </article>
+	    `;
     }
 
-    function createFaqSchema(faqs) {
-        return {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => {
-                return {
-                    "@type": "Question",
-                    name: faq.question,
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: faq.answer
-                    }
-                };
-            })
-        };
-    }
+	    function createFaqSchema(faqs) {
+	        return {
+	            "@context": "https://schema.org",
+	            "@type": "FAQPage",
+	            mainEntity: faqs.map((faq) => {
+	                return {
+	                    "@type": "Question",
+	                    name: interpolateConfigText(faq.question),
+	                    acceptedAnswer: {
+	                        "@type": "Answer",
+	                        text: interpolateConfigText(faq.answer)
+	                    }
+	                };
+	            })
+	        };
+	    }
 
     function renderCookieBanner() {
         const config = getConfig();
@@ -678,35 +714,35 @@
         const storedChoice = localStorage.getItem(config.cookieBanner.storageKey);
 
         mount.innerHTML = `
-      <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="${escapeHtml(config.cookieBanner.title)}" data-cookie-panel>
-        <div class="cookie-banner-inner">
-          <div class="cookie-content">
-            <h2 class="cookie-title">${escapeHtml(config.cookieBanner.title)}</h2>
-            <p class="cookie-text">${escapeHtml(config.cookieBanner.text)}</p>
-            <div class="cookie-links">
-              ${config.cookieBanner.links
-                .map((item) => {
-                    return `
-                    <a href="${escapeHtml(item.href)}" data-allow-static="true">
-                      ${escapeHtml(item.label)}
-                    </a>
-                  `;
-                })
-                .join("")}
-            </div>
-          </div>
+	      <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="${escapeHtml(interpolateConfigText(config.cookieBanner.title))}" data-cookie-panel>
+	        <div class="cookie-banner-inner">
+	          <div class="cookie-content">
+	            <h2 class="cookie-title">${escapeHtml(interpolateConfigText(config.cookieBanner.title))}</h2>
+	            <p class="cookie-text">${escapeHtml(interpolateConfigText(config.cookieBanner.text))}</p>
+	            <div class="cookie-links">
+	              ${config.cookieBanner.links
+	                .map((item) => {
+	                    return `
+	                    <a href="${escapeHtml(item.href)}" data-allow-static="true">
+	                      ${escapeHtml(interpolateConfigText(item.label))}
+	                    </a>
+	                  `;
+	                })
+	                .join("")}
+	            </div>
+	          </div>
 
-          <div class="cookie-actions">
-            <button class="btn btn-secondary" type="button" data-cookie-decline>
-              ${escapeHtml(config.cookieBanner.decline)}
-            </button>
-            <button class="btn btn-primary" type="button" data-cookie-accept>
-              ${escapeHtml(config.cookieBanner.accept)}
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
+	          <div class="cookie-actions">
+	            <button class="btn btn-secondary" type="button" data-cookie-decline>
+	              ${escapeHtml(interpolateConfigText(config.cookieBanner.decline))}
+	            </button>
+	            <button class="btn btn-primary" type="button" data-cookie-accept>
+	              ${escapeHtml(interpolateConfigText(config.cookieBanner.accept))}
+	            </button>
+	          </div>
+	        </div>
+	      </div>
+	    `;
 
         const panel = mount.querySelector("[data-cookie-panel]");
 
@@ -831,14 +867,14 @@
 
                 if (!message) return;
 
-                if (!isValid) {
-                    message.textContent = config.forms.errorMessage;
-                    message.classList.add("is-error");
-                    return;
-                }
+	                if (!isValid) {
+	                    message.textContent = interpolateConfigText(config.forms.errorMessage);
+	                    message.classList.add("is-error");
+	                    return;
+	                }
 
-                message.textContent = config.forms.successMessage;
-                message.classList.remove("is-error");
+	                message.textContent = interpolateConfigText(config.forms.successMessage);
+	                message.classList.remove("is-error");
 
                 form.reset();
 
@@ -1063,39 +1099,52 @@
         if (!config) return;
 
         const forbidden = [
-            config.companyName,
-            config.companyId,
-            config.phone,
-            config.email,
-            config.address && config.address.full
-        ].filter(Boolean);
+            "AquaStep",
+            "AquaStep Provider Matching LLC",
+            "(855) 426-9283",
+            "hello@aquastep.com",
+            "123 Wellness Way",
+            "Clearwater"
+        ];
 
-        document.querySelectorAll("body *").forEach((element) => {
-            if (element.children.length > 0) return;
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node = walker.nextNode();
 
-            const isAllowed =
-                element.closest("[data-allow-static]") ||
-                element.closest("[data-generated-header]") ||
-                element.closest("[data-generated-footer]") ||
-                element.closest("[data-cookie-banner]") ||
-                element.closest("[data-legal-sections]") ||
-                element.hasAttribute("data-company-name") ||
-                element.hasAttribute("data-company-id") ||
-                element.hasAttribute("data-phone-text") ||
-                element.hasAttribute("data-email-text") ||
-                element.hasAttribute("data-address-text") ||
-                element.hasAttribute("data-disclaimer") ||
-                element.hasAttribute("data-legal-notice") ||
-                element.hasAttribute("data-config-text");
+        while (node) {
+            const text = node.nodeValue || "";
 
-            if (isAllowed) return;
+            if (text.trim()) {
+                const parent = node.parentElement;
 
-            forbidden.forEach((value) => {
-                if (value && element.textContent.includes(value)) {
-                    console.warn("Possible hardcoded business data:", value, element);
+                if (parent) {
+                    const isAllowed =
+                        parent.closest("script, style, noscript") ||
+                        parent.closest("[data-allow-static]") ||
+                        parent.closest("[data-generated-header]") ||
+                        parent.closest("[data-generated-footer]") ||
+                        parent.closest("[data-cookie-banner]") ||
+                        parent.closest("[data-legal-sections]") ||
+                        parent.closest("[data-phone-text]") ||
+                        parent.closest("[data-email-text]") ||
+                        parent.closest("[data-address-text]") ||
+                        parent.closest("[data-disclaimer]") ||
+                        parent.closest("[data-legal-notice]") ||
+                        parent.closest("[data-config-text]") ||
+                        parent.closest("[data-company-name]") ||
+                        parent.closest("[data-company-id]");
+
+                    if (!isAllowed) {
+                        forbidden.forEach((value) => {
+                            if (value && text.includes(value)) {
+                                console.warn("Hardcoded business string found:", value, parent);
+                            }
+                        });
+                    }
                 }
-            });
-        });
+            }
+
+            node = walker.nextNode();
+        }
     }
 
     function escapeHtml(value) {
@@ -1232,11 +1281,10 @@
     }
 
     window.AquaStepSite = {
+        interpolateConfigText,
         applyConfig,
         auditHardcodedBusinessData,
         renderServiceCards,
         renderFaqBlocks
     };
 })();
-
-

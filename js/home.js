@@ -3,6 +3,11 @@
 (function () {
     document.addEventListener("DOMContentLoaded", initHomePage);
 
+    function interpolate(value) {
+        const interpolator = window.AquaStepSite && window.AquaStepSite.interpolateConfigText;
+        return interpolator ? interpolator(value) : value;
+    }
+
     function initHomePage() {
         const config = window.SITE_CONFIG;
 
@@ -30,14 +35,16 @@
               ${getHomeIcon(item.icon)}
             </span>
 
-            <div>
-              <h3>${escapeHtml(item.title)}</h3>
-              <p>${escapeHtml(item.text)}</p>
-            </div>
-          </article>
-        `;
+	            <div>
+	              <h3>${escapeHtml(interpolate(item.title))}</h3>
+	              <p>${escapeHtml(interpolate(item.text))}</p>
+	            </div>
+	          </article>
+	        `;
             })
             .join("");
+
+        list.setAttribute("data-allow-static", "true");
     }
 
     function renderHomeCounters(config) {
@@ -56,12 +63,14 @@
               data-counter-suffix="${escapeHtml(item.suffix || "")}"
             >0</strong>
 
-            <span class="home-counter-label">${escapeHtml(item.label)}</span>
-            <p class="home-counter-text">${escapeHtml(item.text)}</p>
-          </article>
-        `;
+	            <span class="home-counter-label">${escapeHtml(interpolate(item.label))}</span>
+	            <p class="home-counter-text">${escapeHtml(interpolate(item.text))}</p>
+	          </article>
+	        `;
             })
             .join("");
+
+        grid.setAttribute("data-allow-static", "true");
     }
 
     function renderHomeReviews(config) {
@@ -77,16 +86,18 @@
           <article class="review-card">
             <span class="review-mark" aria-hidden="true">“</span>
 
-            <p class="review-quote">${escapeHtml(review.quote)}</p>
+	            <p class="review-quote">${escapeHtml(interpolate(review.quote))}</p>
 
             <div class="review-author">
-              <strong>${escapeHtml(review.name)}</strong>
-              <span>${escapeHtml(review.location)}</span>
+	              <strong>${escapeHtml(interpolate(review.name))}</strong>
+	              <span>${escapeHtml(interpolate(review.location))}</span>
             </div>
           </article>
-        `;
+	        `;
             })
             .join("");
+
+        track.setAttribute("data-allow-static", "true");
     }
 
     function initHomeCounterAnimation() {
@@ -312,7 +323,7 @@
     }
 })();
 
-/* FINAL infinite stories carousel — circular prev / next */
+
 
 (function () {
     document.addEventListener("DOMContentLoaded", initStoriesInfiniteCarousel);

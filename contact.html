@@ -27,7 +27,7 @@
     <div data-site-header></div>
 
     <main id="main">
-        <!-- Hero -->
+        
         <section class="hero page-hero contact-hero" aria-labelledby="contact-hero-title">
             <div class="hero-media" aria-hidden="true">
                 <img data-hero-bg src="./assets/images/hero-contact.jpg" alt="">
@@ -66,7 +66,7 @@
             </div>
         </section>
 
-        <!-- Compact contact form -->
+        
         <section class="section light-section contact-form-section" id="request-info"
             aria-labelledby="contact-form-title">
             <div class="container contact-form-layout">
@@ -153,7 +153,7 @@
             </div>
         </section>
 
-        <!-- Contact details strip -->
+        
         <section class="contact-details-strip" aria-labelledby="contact-details-title">
             <div class="container-wide">
                 <h2 class="sr-only" id="contact-details-title">Contact details</h2>
@@ -213,7 +213,7 @@
             </div>
         </section>
 
-        <!-- Map -->
+        
         <section class="section light-section alt contact-map-section" aria-labelledby="contact-map-title">
             <div class="container contact-map-layout">
                 <div class="contact-map-copy">
@@ -247,13 +247,13 @@
                     <span class="map-road is-three" aria-hidden="true"></span>
                     <span class="map-water" aria-hidden="true"></span>
 
-                    <span class="map-label is-one">Clearwater</span>
-                    <span class="map-label is-two">Wellness Way</span>
+                    <span class="map-label is-one" data-address-city></span>
+                    <span class="map-label is-two" data-address-line1></span>
                     <span class="map-label is-three">USA Platform</span>
 
-                    <div class="map-pin-card">
-                        <div class="map-pin-head">
-                            <span class="map-pin-icon" aria-hidden="true">
+	                    <a class="map-pin-card" data-map-link target="_blank" rel="noopener noreferrer">
+	                        <div class="map-pin-head">
+	                            <span class="map-pin-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M12 21C12 21 18.5 14.8 18.5 8.8C18.5 5.2 15.6 2.5 12 2.5C8.4 2.5 5.5 5.2 5.5 8.8C5.5 14.8 12 21 12 21Z"
@@ -268,15 +268,15 @@
                                 <strong data-company-name></strong>
                                 <span data-service-area></span>
                             </div>
-                        </div>
+	                        </div>
 
-                        <address data-address-text></address>
-                    </div>
+	                        <address data-address-text></address>
+	                    </a>
                 </aside>
             </div>
         </section>
 
-        <!-- FAQ / final CTA -->
+        
         <section class="section dark-section contact-faq-section" aria-labelledby="contact-faq-title">
             <div class="container contact-faq-layout">
                 <div class="contact-faq-copy">
@@ -307,7 +307,7 @@
             </div>
         </section>
 
-    <!-- Disclaimer -->
+    
     <section class="section light-section contact-disclaimer-section" aria-labelledby="contact-disclaimer-title">
         <div class="container grid-2 contact-disclaimer-layout">
             <div class="section-head">

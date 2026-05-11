@@ -1,4 +1,4 @@
-/* Contact page */
+
 
 .contact-page .contact-hero {
     min-height: clamp(430px, 56vh, 610px);
@@ -12,7 +12,7 @@
     max-width: 13ch;
 }
 
-/* Contact form section */
+
 
 .contact-form-section {
     overflow: hidden;
@@ -87,7 +87,7 @@
     grid-column: 1 / -1;
 }
 
-/* Contact details strip */
+
 
 .contact-details-strip {
     position: relative;
@@ -159,7 +159,7 @@
     color: var(--color-aqua);
 }
 
-/* Map section */
+
 
 .contact-map-section {
     overflow: hidden;
@@ -278,6 +278,7 @@
     top: 48%;
     z-index: 4;
     width: min(82%, 24rem);
+    display: block;
     transform: translate(-50%, -50%);
     padding: 1rem;
     border: 1px solid rgba(29, 20, 16, 0.16);
@@ -285,6 +286,8 @@
     color: var(--color-dark-text);
     box-shadow: 0 18px 38px rgba(29, 20, 16, 0.16);
     backdrop-filter: blur(12px);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .map-pin-head {
@@ -361,7 +364,7 @@
     bottom: 15%;
 }
 
-/* FAQ / CTA */
+
 
 .contact-faq-section {
     overflow: hidden;
@@ -394,7 +397,7 @@
     background: rgba(255, 255, 255, 0.035);
 }
 
-/* Responsive */
+
 
 @media (max-width: 1080px) {
 
@@ -450,7 +453,7 @@
     }
 }
 
-/* Contact hero — brighter photo */
+
 
 .contact-hero .hero-media img {
     filter: saturate(1.08) contrast(1.04) brightness(0.72) !important;
@@ -478,7 +481,7 @@
             rgba(14, 9, 7, 0.34)) !important;
 }
 
-/* Contact details strip — premium hover color change */
+
 
 .contact-details-strip {
     position: relative;
@@ -557,7 +560,7 @@
     color: #9EDFD8;
 }
 
-/* Contact details strip — light version hover */
+
 
 .contact-detail-card {
     position: relative;
@@ -629,13 +632,13 @@
     color: #247C74;
 }
 
-/* Contact map section — premium hover interactions */
+
 
 .contact-map-section {
     overflow: hidden;
 }
 
-/* Left factor rows hover */
+
 
 .contact-map-section .factor-list {
     display: grid;
@@ -699,7 +702,7 @@
     color: #1D1410;
 }
 
-/* Map card hover */
+
 
 .contact-map-card {
     position: relative;
@@ -734,7 +737,7 @@
     opacity: 1;
 }
 
-/* Roads / water / labels subtle movement */
+
 
 .contact-map-card .map-road,
 .contact-map-card .map-water,
@@ -774,7 +777,7 @@
     border-color: rgba(36, 124, 116, 0.24);
 }
 
-/* Pin card hover */
+
 
 .map-pin-card {
     transition:
@@ -821,7 +824,7 @@
     color: #1D1410;
 }
 
-/* Mobile: hover effects softer */
+
 
 @media (max-width: 760px) {
 
@@ -835,7 +838,7 @@
     }
 }
 
-/* Contact disclaimer section — photo card above disclaimer */
+
 
 .contact-disclaimer-section {
     overflow: hidden;
@@ -896,7 +899,7 @@
     align-items: center;
 }
 
-/* Tablet / mobile */
+
 
 @media (max-width: 900px) {
     .contact-disclaimer-layout {
@@ -921,7 +924,7 @@
     }
 }
 
-/* Compact disclaimer section fix */
+
 
 .contact-disclaimer-section {
     padding-block: clamp(2.2rem, 4vw, 3.4rem) !important;

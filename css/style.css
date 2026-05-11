@@ -64,7 +64,7 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Base */
+
 
 *,
 *::before,
@@ -155,7 +155,7 @@ li {
     color: var(--color-heading);
 }
 
-/* Accessibility */
+
 
 .skip-link {
     position: fixed;
@@ -192,7 +192,7 @@ li {
     }
 }
 
-/* Typography */
+
 
 h1,
 h2,
@@ -289,7 +289,7 @@ h4 {
     color: #8B5724;
 }
 
-/* Layout */
+
 
 .container {
     width: min(100% - 2rem, var(--container));
@@ -367,7 +367,7 @@ h4 {
     display: none;
 }
 
-/* Buttons */
+
 
 .btn {
     position: relative;
@@ -476,7 +476,7 @@ h4 {
     align-items: center;
 }
 
-/* Header */
+
 
 html {
     overflow-x: clip;
@@ -628,7 +628,7 @@ body {
 }
 
 
-/* Footer */
+
 
 .site-footer {
     position: relative;
@@ -762,7 +762,7 @@ body {
 }
 
 
-/* Premium Mobile Menu */
+
 
 .mobile-menu-toggle {
     position: relative;
@@ -847,7 +847,7 @@ body.menu-open .mobile-menu-toggle span::after {
     transform: rotate(-45deg);
 }
 
-/* Fullscreen menu shell */
+
 
 .mobile-menu {
     position: fixed;
@@ -879,7 +879,7 @@ body.menu-open .mobile-menu-toggle span::after {
     -webkit-backdrop-filter: blur(16px);
 }
 
-/* Right premium panel */
+
 
 .mobile-menu-panel {
     position: absolute;
@@ -903,7 +903,7 @@ body.menu-open .mobile-menu-toggle span::after {
     transform: translateX(0);
 }
 
-/* Top area */
+
 
 .mobile-menu-top {
     display: flex;
@@ -964,7 +964,7 @@ body.menu-open .mobile-menu-toggle span::after {
     text-overflow: ellipsis;
 }
 
-/* Real close button */
+
 
 .mobile-menu-close {
     position: relative;
@@ -1012,7 +1012,7 @@ body.menu-open .mobile-menu-toggle span::after {
     transform: rotate(90deg);
 }
 
-/* Content with hidden scrollbar */
+
 
 .mobile-menu-content {
     display: grid;
@@ -1142,7 +1142,7 @@ body.menu-open .mobile-menu-toggle span::after {
     transform: translateX(3px);
 }
 
-/* Contact card */
+
 
 .mobile-contact-card {
     display: grid;
@@ -1190,7 +1190,7 @@ body.menu-open .mobile-menu-toggle span::after {
     margin-top: 0.25rem;
 }
 
-/* Mobile/tablet visibility */
+
 
 @media (max-width: 1080px) {
     .desktop-nav {
@@ -1251,7 +1251,7 @@ body.menu-open .mobile-menu-toggle span::after {
     }
 }
 
-/* Cards and images */
+
 
 .photo-frame {
     position: relative;
@@ -1389,7 +1389,7 @@ body.menu-open .mobile-menu-toggle span::after {
     transform: translateX(4px);
 }
 
-/* Forms */
+
 
 .form-card {
     display: grid;
@@ -1557,7 +1557,7 @@ body.menu-open .mobile-menu-toggle span::after {
     color: var(--color-cream);
 }
 
-/* FAQ */
+
 
 .faq-list {
     display: grid;
@@ -1637,7 +1637,7 @@ body.menu-open .mobile-menu-toggle span::after {
     color: var(--color-dark-muted);
 }
 
-/* Cookie banner */
+
 
 .cookie-banner {
     position: fixed;
@@ -1706,7 +1706,7 @@ body.menu-open .mobile-menu-toggle span::after {
     gap: 0.55rem;
 }
 
-/* Swiper fallback */
+
 
 .swiper {
     width: 100%;
@@ -1757,7 +1757,7 @@ body.menu-open .mobile-menu-toggle span::after {
     border-color: rgba(36, 124, 116, 0.42);
 }
 
-/* Utility components */
+
 
 .hero {
     position: relative;
@@ -1928,7 +1928,7 @@ body.menu-open .mobile-menu-toggle span::after {
     color: var(--color-dark-muted);
 }
 
-/* Responsive */
+
 
 @media (max-width: 1080px) {
     .desktop-nav {
@@ -2162,11 +2162,11 @@ body.menu-open .mobile-menu-toggle span::after {
 }
 
 
-/* Tablet & mobile: equal centered typography for key home sections */
+
 
 @media (max-width: 1080px) {
 
-    /* Общая центровка нужных секций */
+    
     .home-hero .hero-content,
     .home-services-copy,
     .home-request-copy,
@@ -2181,7 +2181,7 @@ body.menu-open .mobile-menu-toggle span::after {
         gap: 1rem;
     }
 
-    /* Конкретные заголовки */
+    
     #home-hero-title,
     #home-services-title,
     #home-request-title,
@@ -2196,7 +2196,7 @@ body.menu-open .mobile-menu-toggle span::after {
         line-height: 0.96;
     }
 
-    /* Стараемся держать в одну строку на планшетах */
+    
     #home-services-title,
     #home-request-title,
     #home-final-cta-title,
@@ -2210,7 +2210,7 @@ body.menu-open .mobile-menu-toggle span::after {
         font-size: clamp(2.55rem, 5.2vw, 4.7rem);
     }
 
-    /* Параграфы под заголовками */
+    
     .home-hero .hero-content p,
     .home-services-copy p,
     .home-request-copy p,
@@ -2223,7 +2223,7 @@ body.menu-open .mobile-menu-toggle span::after {
         text-align: center;
     }
 
-    /* Кикеры и кнопки */
+    
     .home-hero .kicker,
     .home-services-copy .kicker,
     .home-request-copy .kicker,
@@ -2247,7 +2247,7 @@ body.menu-open .mobile-menu-toggle span::after {
         justify-content: center;
     }
 
-    /* Форма тоже ровно */
+    
     .form-card .form-head {
         text-align: center;
         justify-items: center;
@@ -2274,7 +2274,7 @@ body.menu-open .mobile-menu-toggle span::after {
         gap: 0.85rem;
     }
 
-    /* На телефоне оставляем аккуратно по центру и не даем вылезать */
+    
     #home-hero-title,
     #home-services-title,
     #home-request-title,
@@ -2324,7 +2324,7 @@ body.menu-open .mobile-menu-toggle span::after {
         line-height: 1.1 !important;
     }
 }
-/* Desktop services dropdown — final */
+
 
 @media (min-width: 1081px) {
     .desktop-nav {
@@ -2460,5 +2460,79 @@ body.menu-open .mobile-menu-toggle span::after {
 @media (max-width: 1080px) {
     .nav-dropdown-panel {
         display: none !important;
+    }
+}
+
+
+
+.contact-faq-section .faq-item {
+    overflow: hidden;
+}
+
+.contact-faq-section .faq-button {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 2rem;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    min-height: 4.25rem;
+    padding: 1rem 1.05rem;
+
+    text-align: left;
+    line-height: 1.25;
+}
+
+.contact-faq-section .faq-button span {
+    flex: 0 0 2rem;
+    display: grid !important;
+    place-items: center;
+
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+
+    line-height: 1;
+    font-size: 1.05rem;
+    transform-origin: center;
+}
+
+
+.contact-faq-section .faq-panel {
+    overflow: hidden;
+}
+
+.contact-faq-section .faq-panel-inner {
+    min-height: 0;
+}
+
+.contact-faq-section .faq-panel p {
+    padding: 0 1.05rem 1rem;
+}
+
+
+@media (max-width: 760px) {
+    .contact-faq-section .faq-button {
+        grid-template-columns: minmax(0, 1fr) 1.85rem;
+        min-height: 4.6rem;
+        padding: 0.95rem;
+        gap: 0.85rem;
+        font-size: 0.92rem;
+    }
+
+    .contact-faq-section .faq-button span {
+        width: 1.85rem !important;
+        height: 1.85rem !important;
+        min-width: 1.85rem !important;
+        min-height: 1.85rem !important;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .contact-faq-section .faq-button {
+        min-height: 4.85rem;
+        font-size: 0.88rem;
     }
 }

@@ -3,6 +3,11 @@
 (function () {
     document.addEventListener("DOMContentLoaded", initServicePage);
 
+    function interpolate(value) {
+        const interpolator = window.AquaStepSite && window.AquaStepSite.interpolateConfigText;
+        return interpolator ? interpolator(value) : value;
+    }
+
     function initServicePage() {
         const config = window.SITE_CONFIG;
 
@@ -41,32 +46,32 @@
 
     function applyServiceData(service) {
         document.querySelectorAll("[data-service-title]").forEach((element) => {
-            element.textContent = service.title;
+            element.textContent = interpolate(service.title);
             element.setAttribute("data-allow-static", "true");
         });
 
         document.querySelectorAll("[data-service-short-title]").forEach((element) => {
-            element.textContent = service.shortTitle || service.title;
+            element.textContent = interpolate(service.shortTitle || service.title);
             element.setAttribute("data-allow-static", "true");
         });
 
         document.querySelectorAll("[data-service-summary]").forEach((element) => {
-            element.textContent = service.summary;
+            element.textContent = interpolate(service.summary);
             element.setAttribute("data-allow-static", "true");
         });
 
         document.querySelectorAll("[data-service-page-kicker]").forEach((element) => {
-            element.textContent = service.pageKicker || "Walk-in tub category";
+            element.textContent = interpolate(service.pageKicker || "Walk-in tub category");
             element.setAttribute("data-allow-static", "true");
         });
 
         document.querySelectorAll("[data-service-page-title]").forEach((element) => {
-            element.textContent = service.pageTitle || service.title;
+            element.textContent = interpolate(service.pageTitle || service.title);
             element.setAttribute("data-allow-static", "true");
         });
 
         document.querySelectorAll("[data-service-page-intro]").forEach((element) => {
-            element.textContent = service.pageIntro || service.summary;
+            element.textContent = interpolate(service.pageIntro || service.summary);
             element.setAttribute("data-allow-static", "true");
         });
 
@@ -93,7 +98,7 @@
         containers.forEach((container) => {
             container.innerHTML = points
                 .map((point) => {
-                    return `<li>${escapeHtml(point)}</li>`;
+                    return `<li>${escapeHtml(interpolate(point))}</li>`;
                 })
                 .join("");
 
@@ -114,15 +119,15 @@
             container.innerHTML = points
                 .map((point, index) => {
                     return `
-            <article class="service-evaluation-card">
-              <span class="service-evaluation-number">${String(index + 1).padStart(2, "0")}</span>
+	            <article class="service-evaluation-card">
+	              <span class="service-evaluation-number">${String(index + 1).padStart(2, "0")}</span>
 
-              <div class="service-evaluation-text">
-                <strong>${escapeHtml(point)}</strong>
-                <span>${getEvaluationDescription(point)}</span>
-              </div>
-            </article>
-          `;
+	              <div class="service-evaluation-text">
+	                <strong>${escapeHtml(interpolate(point))}</strong>
+	                <span>${getEvaluationDescription(point)}</span>
+	              </div>
+	            </article>
+	          `;
                 })
                 .join("");
 
@@ -141,11 +146,11 @@
             container.innerHTML = related
                 .map((service, index) => {
                     return `
-            <a class="service-mini-item" href="${escapeHtml(service.href)}" data-allow-static="true">
-              <span>${String(index + 1).padStart(2, "0")}</span>
-              <strong>${escapeHtml(service.shortTitle || service.title)}</strong>
-            </a>
-          `;
+	            <a class="service-mini-item" href="${escapeHtml(service.href)}" data-allow-static="true">
+	              <span>${String(index + 1).padStart(2, "0")}</span>
+	              <strong>${escapeHtml(interpolate(service.shortTitle || service.title))}</strong>
+	            </a>
+	          `;
                 })
                 .join("");
 

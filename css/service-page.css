@@ -1,4 +1,4 @@
-/* Individual service pages */
+
 
 .service-detail-page .service-hero {
     min-height: clamp(440px, 58vh, 640px);
@@ -12,7 +12,7 @@
     max-width: 13ch;
 }
 
-/* Service intro section */
+
 
 .service-intro-section {
     overflow: hidden;
@@ -92,7 +92,7 @@
     background: rgba(36, 124, 116, 0.14);
 }
 
-/* Evaluation factors */
+
 
 .service-evaluation-section {
     overflow: hidden;
@@ -198,7 +198,7 @@
     line-height: 1.5;
 }
 
-/* Light row variant */
+
 
 .service-evaluation-section.is-light .service-evaluation-copy p {
     color: var(--color-dark-muted);
@@ -234,7 +234,7 @@
         rgba(255, 255, 255, 0.38);
 }
 
-/* Editorial photo CTA */
+
 
 .service-editorial-section {
     overflow: hidden;
@@ -321,7 +321,7 @@
     text-transform: uppercase;
 }
 
-/* Numbered steps variant */
+
 
 .service-steps-section {
     overflow: hidden;
@@ -391,7 +391,7 @@
     line-height: 1.5;
 }
 
-/* FAQ / final request */
+
 
 .service-faq-section {
     overflow: hidden;
@@ -430,7 +430,7 @@
     line-height: 1.55;
 }
 
-/* Comparison mini strip */
+
 
 .service-mini-strip {
     display: grid;
@@ -464,7 +464,7 @@
     text-transform: uppercase;
 }
 
-/* Reveal animation */
+
 
 .service-reveal {
     opacity: 0;
@@ -480,7 +480,7 @@
     transform: translateY(0);
 }
 
-/* Service page responsive */
+
 
 @media (max-width: 1120px) {
 
@@ -678,7 +678,7 @@
     }
 }
 
-/* Service pages hero photo — slightly brighter on all service pages */
+
 
 .service-hero .hero-media img,
 .service-hero [data-service-hero-image] {
@@ -697,7 +697,7 @@
 }
 
 
-/* Premium service FAQ section */
+
 
 .service-faq-section {
     overflow: hidden;
@@ -909,7 +909,7 @@
         width: 100%;
     }
 }
-/* Service pages — intro points 2 columns on tablets */
+
 
 @media (min-width: 761px) and (max-width: 1120px) {
     .service-intro-points {
@@ -924,7 +924,7 @@
     }
 }
 
-/* Service intro — hide text paragraphs on mobile */
+
 
 @media (max-width: 760px) {
     .service-intro-section .service-intro-copy>p {
@@ -932,7 +932,7 @@
     }
 }
 
-/* Service intro points — centered on tablet and mobile */
+
 
 @media (max-width: 1024px) {
     .service-intro-section .service-intro-points {
@@ -972,7 +972,7 @@
         padding-inline: 1rem;
     }
 }
-/* Service intro points — compact centered tablet/mobile */
+
 
 @media (max-width: 1024px) {
     .service-intro-section .service-intro-points {
@@ -1015,7 +1015,7 @@
         padding: 0.6rem 0.75rem !important;
     }
 }
-/* Service editorial cards — tablet/mobile compact vertical layout */
+
 
 @media (min-width: 761px) and (max-width: 1024px) {
 

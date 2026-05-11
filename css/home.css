@@ -41,7 +41,7 @@
     height: 1.1rem;
 }
 
-/* Benefits strip */
+
 
 .home-benefits-strip {
     position: relative;
@@ -121,7 +121,7 @@
     transform-origin: left;
 }
 
-/* Services preview */
+
 
 .home-services-preview {
     overflow: hidden;
@@ -216,7 +216,7 @@
     line-height: 1.45;
 }
 
-/* Dark photo + counters + form */
+
 
 .home-request-section {
     overflow: hidden;
@@ -314,7 +314,7 @@
     grid-template-columns: 1fr;
 }
 
-/* Reviews */
+
 
 .home-reviews {
     overflow: hidden;
@@ -434,7 +434,7 @@
         linear-gradient(180deg, transparent, rgba(14, 9, 7, 0.55));
 }
 
-/* Responsive */
+
 
 @media (max-width: 1180px) {
 
@@ -554,7 +554,7 @@
         linear-gradient(180deg, rgba(14, 9, 7, 0.08), rgba(14, 9, 7, 0.46));
 }
 
-/* Exact reference-style tub models strip */
+
 
 .home-model-strip {
     position: relative;
@@ -573,7 +573,7 @@
     align-items: stretch;
 }
 
-/* Left copy */
+
 
 .home-model-copy {
     display: flex;
@@ -656,7 +656,7 @@
     transform: translateX(3px);
 }
 
-/* Middle cards */
+
 
 .home-model-cards {
     display: contents;
@@ -774,7 +774,7 @@
     color: #0E0907;
 }
 
-/* Right image panel */
+
 
 .home-model-photo {
     position: relative;
@@ -802,7 +802,7 @@
     pointer-events: none;
 }
 
-/* Tablet */
+
 
 @media (max-width: 1180px) {
     .home-model-strip-inner {
@@ -853,7 +853,7 @@
     }
 }
 
-/* Mobile */
+
 
 @media (max-width: 700px) {
     .home-model-strip-inner {
@@ -877,7 +877,7 @@
     }
 }
 
-/* Exact reference-style reviews strip */
+
 
 .home-stories-strip {
     position: relative;
@@ -896,7 +896,7 @@
     align-items: stretch;
 }
 
-/* Left text */
+
 
 .home-stories-copy {
     display: flex;
@@ -962,7 +962,7 @@
     color: #247C74;
 }
 
-/* Review cards */
+
 
 
 
@@ -999,7 +999,7 @@
     line-height: 1.2;
 }
 
-/* Right photo with fade */
+
 
 .home-stories-photo {
     position: relative;
@@ -1028,7 +1028,7 @@
     pointer-events: none;
 }
 
-/* Tablet */
+
 
 @media (max-width: 1180px) {
     .home-stories-inner {
@@ -1060,7 +1060,7 @@
     }
 }
 
-/* Mobile */
+
 
 @media (max-width: 560px) {
     .home-stories-strip {
@@ -1084,7 +1084,7 @@
     }
 }
 
-/* Reviews carousel fix — add at the very bottom of home.css */
+
 
 .home-stories-carousel {
     min-width: 0 !important;
@@ -1118,21 +1118,21 @@
     scroll-snap-align: start !important;
 }
 
-/* Tablet */
+
 @media (max-width: 860px) {
     .home-story-card {
         flex-basis: 78% !important;
     }
 }
 
-/* Mobile */
+
 @media (max-width: 560px) {
     .home-story-card {
         flex-basis: 88% !important;
     }
 }
 
-/* Strong reviews carousel fix */
+
 
 .home-stories-carousel {
     min-width: 0 !important;
@@ -1174,7 +1174,7 @@
     }
 }
 
-/* FINAL Stories carousel — stable transform version */
+
 
 .home-stories-carousel {
     --story-gap: 0.85rem;
@@ -1223,7 +1223,7 @@
     }
 }
 
-/* Stories carousel responsive polish — tablet 2 cards, mobile 1 card */
+
 
 @media (max-width: 1180px) {
     .home-stories-strip {
@@ -1305,7 +1305,7 @@
         padding: 1.05rem;
     }
 }
-/* Smooth stories carousel anti-jump fix */
+
 
 .home-stories-inner {
     overflow: hidden;
@@ -1335,7 +1335,7 @@
     transform: translateZ(0);
 }
 
-/* Tablet: exactly 2 cards */
+
 @media (max-width: 1180px) {
     .home-stories-inner {
         grid-template-columns: minmax(190px, 240px) minmax(0, 1fr) !important;
@@ -1351,7 +1351,7 @@
     }
 }
 
-/* Mobile: exactly 1 card */
+
 @media (max-width: 760px) {
     .home-stories-inner {
         grid-template-columns: 1fr !important;

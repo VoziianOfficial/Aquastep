@@ -3,6 +3,11 @@
 (function () {
     document.addEventListener("DOMContentLoaded", initAboutPage);
 
+    function interpolate(value) {
+        const interpolator = window.AquaStepSite && window.AquaStepSite.interpolateConfigText;
+        return interpolator ? interpolator(value) : value;
+    }
+
     function initAboutPage() {
         const config = window.SITE_CONFIG;
 
@@ -25,17 +30,19 @@
             .map((step) => {
                 return `
           <article class="about-timeline-step" data-about-reveal>
-            <span class="about-timeline-icon" aria-hidden="true">
-              ${getAboutIcon(step.icon)}
-            </span>
+	            <span class="about-timeline-icon" aria-hidden="true">
+	              ${getAboutIcon(step.icon)}
+	            </span>
 
-            <strong>Step ${escapeHtml(step.number)}</strong>
-            <h3>${escapeHtml(step.title)}</h3>
-            <p>${escapeHtml(step.text)}</p>
-          </article>
-        `;
+	            <strong>Step ${escapeHtml(step.number)}</strong>
+	            <h3>${escapeHtml(interpolate(step.title))}</h3>
+	            <p>${escapeHtml(interpolate(step.text))}</p>
+	          </article>
+	        `;
             })
             .join("");
+
+        timeline.setAttribute("data-allow-static", "true");
     }
 
     function initRevealAnimation() {

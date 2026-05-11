@@ -1,4 +1,4 @@
-/* Legal pages */
+
 
 .legal-page {
     background:
@@ -58,7 +58,7 @@
     line-height: 1.65;
 }
 
-/* Main legal layout */
+
 
 .legal-content-section {
     padding-block: clamp(3rem, 6vw, 5rem);
@@ -264,7 +264,7 @@
     text-transform: uppercase;
 }
 
-/* Bottom CTA */
+
 
 .legal-bottom-cta {
     padding-block: clamp(2.5rem, 5vw, 4rem);
@@ -297,7 +297,7 @@
     color: var(--color-muted);
 }
 
-/* Legal JS reveal */
+
 
 .legal-reveal {
     opacity: 0;
@@ -313,7 +313,7 @@
     transform: translateY(0);
 }
 
-/* Responsive */
+
 
 @media (max-width: 980px) {
     .legal-layout {

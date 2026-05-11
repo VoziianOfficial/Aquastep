@@ -1,4 +1,4 @@
-/* About page */
+
 
 .about-page .about-hero {
     min-height: clamp(430px, 56vh, 610px);
@@ -12,7 +12,7 @@
     max-width: 13ch;
 }
 
-/* Story */
+
 
 .about-story-section {
     overflow: hidden;
@@ -93,7 +93,7 @@
     line-height: 1.45;
 }
 
-/* Does / does not */
+
 
 .about-model-section {
     overflow: hidden;
@@ -131,7 +131,7 @@
 
 .about-model-panel h3 {
     margin: 0 0 1rem;
-    max-width: 14ch;
+    max-width: 17ch;
     font-size: clamp(1.6rem, 2.4vw, 2.35rem);
 }
 
@@ -173,7 +173,7 @@
     line-height: 1.6;
 }
 
-/* Process timeline */
+
 
 .about-process-section {
     overflow: hidden;
@@ -294,7 +294,7 @@
     line-height: 1.5;
 }
 
-/* Trust CTA */
+
 
 .about-trust-section {
     overflow: hidden;
@@ -375,7 +375,7 @@
         linear-gradient(180deg, transparent, rgba(14, 9, 7, 0.7));
 }
 
-/* Responsive */
+
 
 @media (max-width: 1120px) {
 
@@ -462,7 +462,7 @@
     opacity: 0.62;
 }
 
-/* About hero photo — slightly brighter on all devices */
+
 
 .about-hero .hero-media img {
     filter: saturate(1.08) contrast(1.04) brightness(0.45) !important;
@@ -479,11 +479,11 @@
             rgba(14, 9, 7, 0.32)) !important;
 }
 
-/* ABOUT PAGE — tablet centered section titles and hero content */
+
 
 @media (min-width: 761px) and (max-width: 1024px) {
 
-    /* Hero: заголовок, intro и кнопки по центру */
+    
     .about-hero .container {
         min-height: inherit;
         display: flex;
@@ -522,7 +522,7 @@
         align-items: center;
     }
 
-    /* Section titles: ровно по центру */
+    
     #about-trust-title,
     #about-process-title,
     #about-model-title,
@@ -533,7 +533,7 @@
         text-wrap: balance;
     }
 
-    /* Kicker + paragraph рядом с этими заголовками тоже центрируем */
+    
     #about-trust-title~p,
     #about-process-title~p,
     #about-model-title~p,
@@ -543,7 +543,7 @@
         text-align: center !important;
     }
 
-    /* Если заголовки внутри .section-head */
+    
     .about-page .section-head {
         max-width: 780px;
         margin-inline: auto;
@@ -557,13 +557,13 @@
         text-align: center;
     }
 
-    /* Кнопки в about-секциях тоже ровно по центру */
+    
     .about-page .btn-row {
         justify-content: center;
         align-items: center;
     }
 
-    /* Если секция на планшете в 2 колонки — делаем аккуратнее */
+    
     .about-page .grid-2,
     .about-page .about-model-layout,
     .about-page .about-story-layout,
@@ -573,7 +573,7 @@
     }
 }
 
-/* ABOUT HERO — tablet title exactly closer to 2 lines */
+
 
 @media (min-width: 761px) and (max-width: 1024px) {
     .about-hero .container {
@@ -614,7 +614,7 @@
 }
 
 
-/* About provider fit lens — editorial non-card section */
+
 
 .about-lens-section {
     position: relative;
@@ -802,7 +802,7 @@
     bottom: 14%;
 }
 
-/* Tablet */
+
 @media (max-width: 1024px) {
     .about-lens-layout {
         grid-template-columns: 1fr;
@@ -836,7 +836,7 @@
     }
 }
 
-/* Mobile */
+
 @media (max-width: 680px) {
     .about-lens-stage {
         display: grid;
@@ -870,7 +870,7 @@
     }
 }
 
-/* About lens stage — premium hover color shifts */
+
 
 .about-lens-stage,
 .about-lens-photo,
@@ -892,7 +892,7 @@
         opacity 0.35s var(--ease);
 }
 
-/* Hover на всю stage */
+
 .about-lens-stage:hover .about-lens-orbit {
     border-color: rgba(36, 124, 116, 0.38);
     box-shadow: inset 0 0 0 1px rgba(241, 201, 141, 0.12);
@@ -909,7 +909,7 @@
         0 0 0 1.25rem rgba(36, 124, 116, 0.08);
 }
 
-/* Фото внутри stage */
+
 .about-lens-stage:hover .about-lens-photo {
     border-color: rgba(36, 124, 116, 0.28);
     box-shadow: 0 34px 82px rgba(29, 20, 16, 0.28);
@@ -920,7 +920,7 @@
     transform: scale(1.075);
 }
 
-/* Все note при hover stage */
+
 .about-lens-stage:hover .about-lens-note {
     background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.26)),
@@ -928,7 +928,7 @@
     border-color: rgba(36, 124, 116, 0.18);
 }
 
-/* Индивидуальные оттенки */
+
 .about-lens-stage:hover .about-lens-note-one {
     box-shadow: 0 20px 46px rgba(36, 124, 116, 0.14);
 }
@@ -961,7 +961,7 @@
     color: #1D8E83;
 }
 
-/* Hover на конкретную note */
+
 .about-lens-note:hover {
     transform: translateY(-5px);
     border-color: rgba(36, 124, 116, 0.34) !important;
@@ -979,7 +979,7 @@
     color: #2B201B;
 }
 
-/* Mobile: hover мягче, чтобы не дергалось */
+
 @media (max-width: 680px) {
     .about-lens-note:hover {
         transform: translateY(-2px);
