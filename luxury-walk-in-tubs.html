@@ -207,37 +207,60 @@
             </div>
         </section>
 
-        <!-- FAQ / final request -->
-        <section class="section dark-section service-faq-section" aria-labelledby="service-faq-title">
-            <div class="container service-faq-layout">
-                <div class="service-faq-copy">
-                    <span class="kicker">Category FAQ</span>
-
-                    <h2 id="service-faq-title">Helpful questions before comparing premium options.</h2>
-
-                    <p>
-                        Use these answers to prepare for provider conversations around feature packages, pricing,
-                        warranty details,
-                        and independent verification.
-                    </p>
-
-                    <div class="service-final-card">
-                        <p data-disclaimer></p>
-
-                        <a class="btn btn-primary" href="contact.html#request-info">
-                            <span data-config-text="finalCtaButton"></span>
-                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
+    <!-- FAQ / final request -->
+    <section class="section dark-section service-faq-section" aria-labelledby="service-faq-title">
+        <div class="container service-faq-layout service-faq-premium">
+            <div class="service-faq-copy">
+                <span class="kicker">
+                    <span data-current-page-service="shortTitle"></span> FAQ
+                </span>
+    
+                <h2 id="service-faq-title">Questions to ask before comparing provider options.</h2>
+    
+                <p>
+                    Use these notes to prepare for provider conversations about fit, feature packages,
+                    quote scope, timelines, warranty language, and local availability.
+                </p>
+    
+                <div class="service-faq-mini-grid" aria-label="Helpful comparison reminders">
+                    <article class="service-faq-mini-card">
+                        <span>01</span>
+                        <strong>Feature fit</strong>
+                        <p>Compare comfort, safety, layout, and bathing needs.</p>
+                    </article>
+    
+                    <article class="service-faq-mini-card">
+                        <span>02</span>
+                        <strong>Quote scope</strong>
+                        <p>Ask what is included, optional, or billed separately.</p>
+                    </article>
+    
+                    <article class="service-faq-mini-card">
+                        <span>03</span>
+                        <strong>Provider review</strong>
+                        <p>Verify licensing, insurance, warranties, and availability.</p>
+                    </article>
                 </div>
-
-                <div class="faq-list" data-faq-list="service"></div>
             </div>
-        </section>
+    
+            <div class="service-faq-panel">
+                <div class="faq-list" data-faq-list="service"></div>
+    
+                <div class="service-final-card">
+                    <p data-disclaimer></p>
+    
+                    <a class="btn btn-primary" href="contact.html#request-info">
+                        <span data-config-text="finalCtaButton"></span>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     </main>
 
     <div data-site-footer></div>

@@ -646,3 +646,40 @@ window.SITE_CONFIG = {
         }
     }
 };
+
+/* Extra FAQ questions for every service page */
+
+const COMMON_SERVICE_FAQS = [
+    {
+        question: "Is this platform a walk-in tub installer?",
+        answer: "No. The platform helps homeowners compare independent walk-in tub provider options. It does not install tubs, perform bathroom work, or send its own crews."
+    },
+    {
+        question: "What should I ask providers before choosing?",
+        answer: "Ask about quote scope, product specifications, warranty terms, timeline, licensing, insurance, service coverage, and whether any costs may be added later."
+    },
+    {
+        question: "Can provider availability vary by location?",
+        answer: "Yes. Provider availability can vary by ZIP code, city, tub category, appointment timing, and local service coverage."
+    },
+    {
+        question: "Should I compare more than one provider?",
+        answer: "Yes. Comparing multiple provider options can help homeowners better understand pricing, feature packages, timelines, and warranty differences."
+    }
+];
+
+if (window.SITE_CONFIG && Array.isArray(window.SITE_CONFIG.services)) {
+    window.SITE_CONFIG.services.forEach((service) => {
+        if (!Array.isArray(service.faqs)) {
+            service.faqs = [];
+        }
+
+        COMMON_SERVICE_FAQS.forEach((faq) => {
+            const alreadyExists = service.faqs.some((item) => item.question === faq.question);
+
+            if (!alreadyExists) {
+                service.faqs.push(faq);
+            }
+        });
+    });
+}
