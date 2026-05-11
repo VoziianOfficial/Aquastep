@@ -91,11 +91,13 @@
             legalNotice: config.legalNotice
         };
 
-        return value.replace(/\{\{([a-zA-Z]+)\}\}|\{([a-zA-Z]+)\}/g, (match, mustacheKey, braceKey) => {
+        const output = value.replace(/\{\{([a-zA-Z]+)\}\}|\{([a-zA-Z]+)\}/g, (match, mustacheKey, braceKey) => {
             const key = mustacheKey || braceKey;
             const replacement = replacements[key];
             return replacement === null || replacement === undefined ? match : String(replacement);
         });
+
+        return output === value ? output : resolveConfigText(output);
     }
 
     function interpolateConfigText(value) {

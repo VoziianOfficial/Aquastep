@@ -2,7 +2,7 @@
 
 window.SITE_CONFIG = {
     companyName: "AquaStep",
-    companyId: "AquaStep Provider Matching LLC",
+    companyId: "{{companyName}} Provider Matching LLC",
 
 	brand: {
 	    shortName: "{{companyName}}",
@@ -298,13 +298,13 @@ window.SITE_CONFIG = {
             number: "02",
             icon: "search",
             title: "Compare options",
-            text: "Review independent provider categories and feature considerations."
+            text: "Review independent provider categories."
         },
         {
             number: "03",
             icon: "quote",
             title: "Review details",
-            text: "Ask providers about quotes, timelines, warranty terms, and availability."
+            text: "Ask providers about quotes, timelines, warranty terms."
         },
         {
             number: "04",
