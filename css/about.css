@@ -190,6 +190,29 @@
     color: var(--color-dark-muted);
 }
 
+@media (min-width: 1025px) {
+    .about-model-head,
+    .about-process-head {
+        margin-inline: auto;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .about-model-head h2,
+    .about-process-head h2 {
+        max-width: 28ch;
+        margin-inline: auto;
+        text-wrap: balance;
+    }
+
+    .about-model-head p,
+    .about-process-head p {
+        max-width: 68ch;
+        margin-inline: auto;
+        text-wrap: balance;
+    }
+}
+
 .about-timeline {
     position: relative;
     display: grid;
@@ -437,4 +460,412 @@
 
 .about-model-panel.is-muted {
     opacity: 0.62;
+}
+
+/* About hero photo — slightly brighter on all devices */
+
+.about-hero .hero-media img {
+    filter: saturate(1.08) contrast(1.04) brightness(0.45) !important;
+}
+
+.about-hero .hero-overlay {
+    background:
+        linear-gradient(90deg,
+            rgba(14, 9, 7, 0.56),
+            rgba(14, 9, 7, 0.22) 48%,
+            rgba(14, 9, 7, 0.42)),
+        linear-gradient(180deg,
+            rgba(14, 9, 7, 0.04),
+            rgba(14, 9, 7, 0.32)) !important;
+}
+
+/* ABOUT PAGE — tablet centered section titles and hero content */
+
+@media (min-width: 761px) and (max-width: 1024px) {
+
+    /* Hero: заголовок, intro и кнопки по центру */
+    .about-hero .container {
+        min-height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about-hero .hero-content {
+        width: min(100%, 760px);
+        margin-inline: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding-block: clamp(5rem, 8vw, 7rem);
+    }
+
+	#about-hero-title {
+	    max-width: 18ch !important;
+	    margin-inline: auto;
+	    text-align: center;
+	    text-wrap: balance;
+	}
+
+    [data-config-text="aboutHeroIntro"] {
+        max-width: 620px !important;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .about-hero .btn-row {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Section titles: ровно по центру */
+    #about-trust-title,
+    #about-process-title,
+    #about-model-title,
+    #about-story-title {
+        max-width: 760px !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+        text-wrap: balance;
+    }
+
+    /* Kicker + paragraph рядом с этими заголовками тоже центрируем */
+    #about-trust-title~p,
+    #about-process-title~p,
+    #about-model-title~p,
+    #about-story-title~p {
+        max-width: 680px !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+    }
+
+    /* Если заголовки внутри .section-head */
+    .about-page .section-head {
+        max-width: 780px;
+        margin-inline: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .about-page .section-head .kicker,
+    .about-page .section-head p {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    /* Кнопки в about-секциях тоже ровно по центру */
+    .about-page .btn-row {
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Если секция на планшете в 2 колонки — делаем аккуратнее */
+    .about-page .grid-2,
+    .about-page .about-model-layout,
+    .about-page .about-story-layout,
+    .about-page .about-process-layout,
+    .about-page .about-trust-layout {
+        align-items: center;
+    }
+}
+
+/* ABOUT HERO — tablet title exactly closer to 2 lines */
+
+@media (min-width: 761px) and (max-width: 1024px) {
+    .about-hero .container {
+        min-height: clamp(560px, 72vh, 720px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about-hero .hero-content {
+        max-width: 760px !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+	#about-hero-title {
+	    max-width: 18ch !important;
+	    margin-inline: auto !important;
+	    font-size: clamp(4.2rem, 8.8vw, 5.8rem) !important;
+	    line-height: 0.92 !important;
+	    letter-spacing: 0.015em !important;
+	    text-align: center !important;
+	    text-wrap: balance;
+	}
+
+    .about-hero [data-config-text="aboutHeroIntro"] {
+        max-width: 620px !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+    }
+
+    .about-hero .btn-row {
+        justify-content: center !important;
+    }
+}
+
+
+/* About provider fit lens — editorial non-card section */
+
+.about-lens-section {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 10%, rgba(36, 124, 116, 0.09), transparent 24rem),
+        radial-gradient(circle at 88% 72%, rgba(139, 87, 36, 0.13), transparent 25rem),
+        #F4E8D8;
+    color: var(--color-dark-text);
+}
+
+.about-lens-section::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: rgba(29, 20, 16, 0.12);
+}
+
+.about-lens-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.74fr) minmax(0, 1.26fr);
+    gap: clamp(1.25rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.about-lens-copy {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    gap: 1rem;
+    max-width: 34rem;
+}
+
+.about-lens-copy h2 {
+    max-width: 12ch;
+    margin: 0;
+    color: #1D1410;
+    font-size: clamp(2.45rem, 4.7vw, 5.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+}
+
+.about-lens-copy p {
+    max-width: 31rem;
+    color: #4B3A31;
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.about-lens-stage {
+    position: relative;
+    min-height: clamp(34rem, 48vw, 43rem);
+    isolation: isolate;
+}
+
+.about-lens-orbit {
+    position: absolute;
+    inset: 8% 7%;
+    z-index: -1;
+    border: 1px solid rgba(36, 124, 116, 0.2);
+    border-radius: 999px;
+}
+
+.about-lens-orbit::before,
+.about-lens-orbit::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+}
+
+.about-lens-orbit::before {
+    inset: 12%;
+    border: 1px dashed rgba(139, 87, 36, 0.22);
+}
+
+.about-lens-orbit::after {
+    top: 50%;
+    left: 50%;
+    width: 0.62rem;
+    height: 0.62rem;
+    transform: translate(-50%, -50%);
+    background: #247C74;
+    box-shadow:
+        0 0 0 0.55rem rgba(36, 124, 116, 0.12),
+        0 0 0 1.05rem rgba(36, 124, 116, 0.05);
+}
+
+.about-lens-photo {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: 1;
+    width: min(42vw, 34rem);
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 999px;
+    border: 1px solid rgba(29, 20, 16, 0.14);
+    background: #1D1410;
+    box-shadow: 0 28px 70px rgba(29, 20, 16, 0.22);
+}
+
+.about-lens-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(14, 9, 7, 0.02), rgba(14, 9, 7, 0.22)),
+        radial-gradient(circle at 50% 34%, transparent 32%, rgba(14, 9, 7, 0.28));
+    pointer-events: none;
+}
+
+.about-lens-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.04) contrast(1.03) brightness(0.92);
+    transform: scale(1.04);
+}
+
+.about-lens-note {
+    position: absolute;
+    z-index: 2;
+    width: min(17rem, 44%);
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(29, 20, 16, 0.12);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.2)),
+        rgba(255, 247, 236, 0.64);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 42px rgba(29, 20, 16, 0.12);
+}
+
+.about-lens-note span {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: #247C74;
+    font-size: 0.68rem;
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.about-lens-note strong {
+    display: block;
+    margin-bottom: 0.32rem;
+    color: #1D1410;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 950;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.about-lens-note p {
+    margin: 0;
+    color: #4B3A31;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.about-lens-note-one {
+    top: 4%;
+    left: 4%;
+}
+
+.about-lens-note-two {
+    top: 13%;
+    right: 0;
+}
+
+.about-lens-note-three {
+    right: 6%;
+    bottom: 6%;
+}
+
+.about-lens-note-four {
+    left: 0;
+    bottom: 14%;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .about-lens-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-lens-copy {
+        max-width: 48rem;
+        margin-inline: auto;
+        justify-items: center;
+    }
+
+    #about-lens-title {
+        max-width: 24ch;
+        margin-inline: auto;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    .about-lens-copy p {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .about-lens-stage {
+        min-height: 38rem;
+    }
+
+    .about-lens-photo {
+        width: min(62vw, 31rem);
+    }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+    .about-lens-stage {
+        display: grid;
+        gap: 0.75rem;
+        min-height: auto;
+    }
+
+    .about-lens-orbit {
+        display: none;
+    }
+
+    .about-lens-photo {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        max-height: 18rem;
+        aspect-ratio: 1.35 / 1;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .about-lens-note {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        text-align: left;
+    }
+
+    .about-lens-copy h2 {
+        font-size: clamp(2.35rem, 12vw, 3.35rem);
+    }
 }

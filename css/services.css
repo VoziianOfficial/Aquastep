@@ -667,6 +667,22 @@
     .services-prep-copy p {
         max-width: 46rem;
     }
+
+    .services-prep-card {
+        min-height: 10rem;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 0.95rem;
+        padding-right: 3.1rem;
+    }
+
+    .services-prep-number {
+        position: absolute;
+        top: 0.95rem;
+        right: 1rem;
+        margin: 0;
+        pointer-events: none;
+    }
 }
 
 /* Mobile */
@@ -678,6 +694,15 @@
 
     .services-prep-card {
         min-height: auto;
+        justify-content: flex-start;
+        gap: 0.65rem;
+        padding: 0.95rem 0.95rem 0.9rem;
+        padding-right: 2.9rem;
+    }
+
+    .services-prep-number {
+        top: 0.9rem;
+        right: 0.95rem;
     }
 
     .services-prep-copy h2 {
