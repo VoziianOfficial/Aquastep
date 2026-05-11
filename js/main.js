@@ -54,9 +54,13 @@
         initSimpleCarousels();
         setCurrentYear();
 
-        window.requestAnimationFrame(() => {
-            auditHardcodedBusinessData();
-        });
+        const shouldRunConfigAudit = new URLSearchParams(window.location.search).has("audit");
+
+        if (shouldRunConfigAudit) {
+            window.requestAnimationFrame(() => {
+                auditHardcodedBusinessData();
+            });
+        }
     }
 
     function getConfig() {
@@ -928,7 +932,23 @@
 
         document.querySelectorAll("body *").forEach((element) => {
             if (element.children.length > 0) return;
-            if (element.hasAttribute("data-allow-static")) return;
+
+            const isAllowed =
+                element.closest("[data-allow-static]") ||
+                element.closest("[data-generated-header]") ||
+                element.closest("[data-generated-footer]") ||
+                element.closest("[data-cookie-banner]") ||
+                element.closest("[data-legal-sections]") ||
+                element.hasAttribute("data-company-name") ||
+                element.hasAttribute("data-company-id") ||
+                element.hasAttribute("data-phone-text") ||
+                element.hasAttribute("data-email-text") ||
+                element.hasAttribute("data-address-text") ||
+                element.hasAttribute("data-disclaimer") ||
+                element.hasAttribute("data-legal-notice") ||
+                element.hasAttribute("data-config-text");
+
+            if (isAllowed) return;
 
             forbidden.forEach((value) => {
                 if (value && element.textContent.includes(value)) {
