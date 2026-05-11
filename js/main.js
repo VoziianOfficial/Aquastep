@@ -226,10 +226,9 @@
         <div class="container-wide site-header-inner">
           <a class="site-logo" href="index.html" aria-label="${escapeHtml(config.brand.logoLabel)}" data-allow-static="true">
             ${getIcon("drop", "site-logo-icon")}
-            <span class="site-logo-text">
-              <span class="site-logo-name" data-company-name data-allow-static="true"></span>
-              <span class="site-logo-tagline" data-brand-tagline data-allow-static="true"></span>
-            </span>
+          <span class="site-logo-text">
+         <span class="site-logo-name" data-company-name data-allow-static="true"></span>
+         </span>
           </a>
 
           <nav class="desktop-nav" aria-label="Primary navigation" data-navigation></nav>
@@ -252,35 +251,56 @@
         </div>
       </header>
 
-      <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" data-mobile-menu inert>
-        <div class="mobile-menu-panel">
-          <div class="mobile-menu-grid">
-            <nav class="mobile-nav-list" aria-label="Mobile primary navigation" data-mobile-navigation></nav>
+   <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" data-mobile-menu inert>
+  <div class="mobile-menu-backdrop" data-mobile-menu-close></div>
 
-            <div>
-              <p class="mobile-menu-title">Tub categories</p>
-              <div class="mobile-services-list" data-mobile-service-links></div>
-            </div>
+  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-menu-top">
+      <a class="mobile-menu-brand" href="index.html" data-mobile-menu-close data-allow-static="true">
+        ${getIcon("drop", "mobile-menu-brand-icon")}
+        <span>
+          <strong data-company-name data-allow-static="true"></strong>
+          <small data-brand-tagline data-allow-static="true"></small>
+        </span>
+      </a>
 
-            <div class="mobile-contact-card">
-              <a data-phone-link data-allow-static="true">
-                ${getIcon("phone")}
-                <span data-phone-text data-allow-static="true"></span>
-              </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu" data-mobile-menu-close>
+        <span></span>
+      </button>
+    </div>
 
-              <a data-email-link data-allow-static="true">
-                ${getIcon("mail")}
-                <span data-email-text data-allow-static="true"></span>
-              </a>
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-block">
+        <p class="mobile-menu-title">Navigation</p>
+        <nav class="mobile-nav-list" aria-label="Mobile primary navigation" data-mobile-navigation></nav>
+      </div>
 
-              <a class="btn btn-primary" href="contact.html#request-info" data-mobile-menu-close>
-                <span data-config-text="finalCtaButton" data-allow-static="true"></span>
-                ${getIcon("arrow-right")}
-              </a>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <div class="mobile-menu-block">
+        <p class="mobile-menu-title">Walk-In Tub Categories</p>
+        <div class="mobile-services-list" data-mobile-service-links></div>
+      </div>
+
+      <div class="mobile-contact-card">
+        <div class="mobile-contact-eyebrow">Request support</div>
+
+        <a class="mobile-contact-link" data-phone-link data-allow-static="true">
+          ${getIcon("phone")}
+          <span data-phone-text data-allow-static="true"></span>
+        </a>
+
+        <a class="mobile-contact-link" data-email-link data-allow-static="true">
+          ${getIcon("mail")}
+          <span data-email-text data-allow-static="true"></span>
+        </a>
+
+        <a class="btn btn-primary mobile-menu-cta" href="contact.html#request-info" data-mobile-menu-close>
+          <span data-config-text="finalCtaButton" data-allow-static="true"></span>
+          ${getIcon("arrow-right")}
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
     `;
 
         renderNavigation();
