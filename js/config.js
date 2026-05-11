@@ -458,7 +458,20 @@ window.SITE_CONFIG = {
                 question: "What details should I include in my request?",
                 answer:
                     "Useful details include ZIP code, preferred tub category, comfort or safety needs, bathroom layout concerns, and preferred contact information."
-            }
+            },
+            {
+                question: "Is AquaStep a walk-in tub installer?",
+                answer: "No. AquaStep is an independent provider matching platform. The platform does not install, repair, service, or sell walk-in tubs directly."
+            },
+            {
+                question: "What happens after I submit a request?",
+                answer: "Your request details help organize the first comparison step. Independent providers may contact you separately depending on category, location, and availability."
+            },
+            {
+                question: "Do I need to choose a provider through AquaStep?",
+                answer: "No. Homeowners make their own independent decisions. You should compare provider details, written quotes, product options, timelines, and warranty terms before choosing."
+            },
+            
         ]
     },
 
